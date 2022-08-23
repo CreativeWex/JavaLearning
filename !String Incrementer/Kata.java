@@ -3,19 +3,18 @@ public class Kata {
         int zeroCounter = 0;
         for (int i = 0; i < number.length() - 1; i++) {
             if (number.charAt(i) != '0') {
-                if (number.charAt(i + 1) == '9') {
-                    zeroCounter -= 1;
-                    if (zeroCounter < 0) {
-                        zeroCounter = 0;
-                    }
-                }
                 break;
             }
             zeroCounter++;
         }
+        if (number.matches("0+9\\d*")) {
+            zeroCounter -= 1;
+        }
         return zeroCounter;
     }
     public static String incrementString(String str) {
+
+
         if (str.matches("[a-z]+[^\\d]+") || str.matches("")) {
             return str += "1";
         } else {
