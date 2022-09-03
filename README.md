@@ -1,8 +1,6 @@
 <a name="Begin"></a>
 # Содержание
 
-[Принципы программирования](#DKY) <br>
-[Принципы SOLID](#Solid) <br>
 [RegEx - Regular Expressions - Регулярные Выражения](#RegEx) <br>
 
 ---
@@ -24,7 +22,9 @@
   - [ISP](ProgrammingPrinciples.md#ISP)
   - [DIP](ProgrammingPrinciples.md#DIP)
 
+- [YAGNI](ProgrammingPrinciples.md#YAGNI)
 - [KISS](ProgrammingPrinciples.md#KISS)
+- [DRY](ProgrammingPrinciples.md#DRY)
 
 # RegEx - Regular Expressions - Регулярные Выражения
 <a name="RegEx"></a>
