@@ -26,6 +26,11 @@
 - [KISS](ProgrammingPrinciples.md#KISS)
 - [DRY](ProgrammingPrinciples.md#DRY)
 
+## Чистый код по Р. Мартину
+- [Методы](CleanCode.md#CleanMethods)
+- [Комментарии](CleanCode.md#CleanComms)
+
+
 # RegEx - Regular Expressions - Регулярные Выражения
 <a name="RegEx"></a>
 [Поиск любого символа](#RegEx1) <br>
