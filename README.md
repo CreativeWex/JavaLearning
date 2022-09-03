@@ -8,7 +8,7 @@
 ---
 ## ООП
 - [Детали ООП](OOP.md)
-- [Преимущества и недостатки ООП](OOP.md#OOPpluses); 
+- [Преимущества и недостатки ООП](OOP.md#OOPpluses) 
 - [Статическое и динамическое связывание](OOP.md#OOPbinding)
 - [Инкапсуляция и реализации сокрытия](OOP.md#OOPhiding)
 - [Наследование](OOP.md#OOPInherit)
@@ -16,6 +16,15 @@
 - [Абстракция](OOP.md#Abstract)
 - [Обмен сообщениями](OOP.md#Letters)
 
+## Принципы программирования
+- [Принципы SOLID](ProgrammingPrinciples.md#Solid)
+  - [SRP](ProgrammingPrinciples.md#srp)
+  - [OCP](ProgrammingPrinciples.md#OCP)
+  - [LSP](ProgrammingPrinciples.md#LSP)
+  - [ISP](ProgrammingPrinciples.md#ISP)
+  - [DIP](ProgrammingPrinciples.md#DIP)
+
+- [KISS](ProgrammingPrinciples.md#KISS)
 
 # RegEx - Regular Expressions - Регулярные Выражения
 <a name="RegEx"></a>
