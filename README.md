@@ -8,19 +8,19 @@
 - [Детали ООП](OOP.md)
 - [Преимущества и недостатки ООП](OOP.md#OOPpluses) 
 - [Статическое и динамическое связывание](OOP.md#OOPbinding)
-- [Инкапсуляция и реализации сокрытия](OOP.md#OOPhiding)
+- [Инкапсуляция и реализации сокрытия](OOP.md#OOPIncaps)
 - [Наследование](OOP.md#OOPInherit)
 - [Полиморфизм](OOP.md#OOPPolymorph)
 - [Абстракция](OOP.md#Abstract)
 - [Обмен сообщениями](OOP.md#Letters)
 
 ## Принципы программирования
-- [Принципы SOLID](ProgrammingPrinciples.md#Solid)
-  - [SRP](ProgrammingPrinciples.md#srp)
-  - [OCP](ProgrammingPrinciples.md#OCP)
-  - [LSP](ProgrammingPrinciples.md#LSP)
-  - [ISP](ProgrammingPrinciples.md#ISP)
-  - [DIP](ProgrammingPrinciples.md#DIP)
+- [Принципы SOLID](ProgrammingPrinciples.md#Solid) - 
+  [SRP](ProgrammingPrinciples.md#srp),
+  [OCP](ProgrammingPrinciples.md#OCP),
+  [LSP](ProgrammingPrinciples.md#LSP),
+  [ISP](ProgrammingPrinciples.md#ISP),
+  [DIP](ProgrammingPrinciples.md#DIP)
 
 - [YAGNI](ProgrammingPrinciples.md#YAGNI)
 - [KISS](ProgrammingPrinciples.md#KISS)
