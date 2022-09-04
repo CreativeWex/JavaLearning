@@ -18,7 +18,7 @@
 
 ## Шаблоны проектирования
 
-* [Виды](Patterns/README.md)
+* [Виды](Patterns/)
 * [Порождающие](Patterns/README.md#instantiate)
 * [Структурные](Patterns/README.md#structure)
 * [Поведенческие](Patterns/README.md#responsibilities)
