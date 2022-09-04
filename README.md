@@ -14,6 +14,17 @@
 - [Абстракция](OOP.md#Abstract)
 - [Обмен сообщениями](OOP.md#Letters)
 
+---
+
+## Шаблоны проектирования
+
+* [Виды](Patterns/README.md)
+* [Порождающие](Patterns/README.md#instantiate)
+* [Структурные](Patterns/README.md#structure)
+* [Поведенческие](Patterns/README.md#responsibilities)
+
+---
+
 ## Принципы программирования
 - [Принципы SOLID](ProgrammingPrinciples.md#Solid) - 
   [SRP](ProgrammingPrinciples.md#srp),
@@ -26,9 +37,13 @@
 - [KISS](ProgrammingPrinciples.md#KISS)
 - [DRY](ProgrammingPrinciples.md#DRY)
 
+---
+
 ## Чистый код по Р. Мартину
 - [Методы](CleanCode.md#CleanMethods)
 - [Комментарии](CleanCode.md#CleanComms)
+
+---
 
 
 # RegEx - Regular Expressions - Регулярные Выражения
