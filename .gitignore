@@ -1,3 +1,11 @@
 .idea
 *.iml
 out
+
+CodeWars/.idea
+CodeWars/*.iml
+CodeWars/4 kyu/*.iml
+CodeWars/5 kyu/*.iml
+CodeWars/6 kyu/*.iml
+
+Patterns/*.iml
