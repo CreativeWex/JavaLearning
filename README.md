@@ -1,5 +1,5 @@
 <a name="Begin"></a>
-# Содержание
+# Отдельные темы
 
 - [RegEx - Regular Expressions - Регулярные Выражения](#RegEx) <br>
 - [Random](#random) <br>
