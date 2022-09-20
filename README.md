@@ -1,9 +1,21 @@
 <a name="Begin"></a>
 # Содержание
 
-[RegEx - Regular Expressions - Регулярные Выражения](#RegEx) <br>
+- [RegEx - Regular Expressions - Регулярные Выражения](#RegEx) <br>
+- [Random](#random) <br>
+---
+
+# Коллекции и структуры данных
+
+* [HashMap](#Collections/README.md/map)
+  * [LinkedHashMap](#Collections/README.md/linkedmap)
+* [Set](#Collections/README.md/set)
+  * [HashSet](#Collections/README.md/hashset)
+  * [LinkedHashSet](#Collections/README.md/linkedhashset)
+  * [TreeSet](#Collections/README.md/treeset)
 
 ---
+
 ## ООП
 - [Детали ООП](OOP.md)
 - [Преимущества и недостатки ООП](OOP.md#OOPpluses) 
@@ -35,25 +47,40 @@
 
 - [YAGNI](ProgrammingPrinciples.md#YAGNI)
 - [KISS](ProgrammingPrinciples.md#KISS)
-- [DRY](ProgrammingPrinciples.md#DRY)
-
+- [DRY](ProgrammingPrinciples.md#DRY) <br><br>
+- [Чистый код по Р. Мартину](CleanCode.md)
 ---
 
-## Чистый код по Р. Мартину
-- [Методы](CleanCode.md#CleanMethods)
-- [Комментарии](CleanCode.md#CleanComms)
+<a name="random"></a>
+
+# Random
+
+### Методы
+
+```java
+// Конуструкторы
+Random()
+Random(long seed) // начальное число
+
+// Методы
+synchronized void setSeeD(long seed) // устанавливает начальное значение
+long nextLong() // возвращает следующее случайное значение типа long
+int nextInt(int n) // возвращает следующее случайное значение типа int в диапазоне от 0 до n
+
+// Генерация в определенном интервале
+int i = random.nextInt(max - min + 1) 
+```
 
 ---
-
 
 # RegEx - Regular Expressions - Регулярные Выражения
 <a name="RegEx"></a>
-[Поиск любого символа](#RegEx1) <br>
-[Поиск по набору символов](#RegEx2) <br>
-[Перечисление вариантов](#RegEx3) <br>
-[Метасимволы](#RegEx4) <br>
-[Квантификаторы (количество повторений)](#RegEx5) <br>
-[Позиция внутри строки (Поиск конкретного слова)](#RegEx6) <br>
+- [Поиск любого символа](#RegEx1) <br>
+- [Поиск по набору символов](#RegEx2) <br>
+- [Перечисление вариантов](#RegEx3) <br>
+- [Метасимволы](#RegEx4) <br>
+- [Квантификаторы (количество повторений)](#RegEx5) <br>
+- [Позиция внутри строки (Поиск конкретного слова)](#RegEx6) <br>
 
 
 **Регулярные выражения** — это механизм для поиска и замены текста путем проверки строк на соответствие заданному шаблону.
