@@ -7,12 +7,12 @@
 
 # Коллекции и структуры данных
 
-* [HashMap](#Collections/README.md/map)
-  * [LinkedHashMap](#Collections/README.md/linkedmap)
-* [Set](#Collections/README.md/set)
-  * [HashSet](#Collections/README.md/hashset)
-  * [LinkedHashSet](#Collections/README.md/linkedhashset)
-  * [TreeSet](#Collections/README.md/treeset)
+* [HashMap](Collections/README.md#map)
+  * [LinkedHashMap](Collections/README.md#linkedmap)
+* [Set](Collections/README.md#set)
+  * [HashSet](Collections/README.md#hashset)
+  * [LinkedHashSet](Collections/README.md#linkedhashset)
+  * [TreeSet](Collections/README.md#treeset)
 
 ---
 
