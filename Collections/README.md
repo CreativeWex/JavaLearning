@@ -1,16 +1,25 @@
 # Коллекции
-#### Содержание
+### Содержание
 
-* [HashMap](#map)
+* [Map](#map)
+  * [HashMap](#hashmap)
   * [LinkedHashMap](#linkedmap)
+  * [TreeMap](#treemap)
+  * [HashTable](#hashtable)
+  <br><br>
 * [Set](#set)
   * [HashSet](#hashset)
   * [LinkedHashSet](#linkedhashset)
   * [TreeSet](#treeset)
+  * [EnumSet](#enumset)
 
-<a name="map"></a>
+# Map | Словарь
 
-# HashMap | Словарь
+Интерфейс Map содержит основные реализации: `Hashmap`, `LinkedHashMap`, `Hashtable`, `TreeMap`. 
+
+<a name="hashmap"></a>
+
+## HashMap
 
 Коллекция "ключ-значение", все ключи уникальны в рамках объекта **Program**.
 
@@ -34,6 +43,17 @@ for (Map.Entry entry : hashMap.entrySet()) // entrySet() - возвращает 
     System.out.println("; value: " + entry.getValue()); // getKey() - получить значение сущности
 }
 ```
+
+### Конвертация Map в List
+```java
+// key list
+List<Integer> keyList = new ArrayList<>(map.keySet());
+// value list
+List<String> valueList = new ArrayList<>(map.values());
+// key-value list
+List<Map.Entry<Integer, String>> entryList = new ArrayList<>(map.entrySet());
+```
+
 ### Основные методы
 
 ```java
@@ -87,6 +107,51 @@ key: 2; value = two
 key: 3; value = three
 key: 4; value = four
 ```
+
+<a name="treemap"></a>
+
+## TreeMap
+
+`Map` сортирующая элементы по ключу. Позволяет как создавать изначально отсортированные мапы или
+сортировать уже существующие.
+
+### Сортировка ключей существующей `Map`
+
+```java
+LinkedHashMap<String, Integer> linkedHashMap = new LinkedHashMap<>(); // неотсортированная мапа
+linkedHashMap.put("xxx", 5);
+linkedHashMap.put("a", 3);
+linkedHashMap.put("ccc", 1);
+linkedHashMap.put("b", 2);
+for (Map.Entry entry : linkedHashMap.entrySet()) {
+    System.out.println("key: " + entry.getKey() + "; value: " + entry.getValue());
+}
+
+System.out.println("\n");
+
+TreeMap<String, Integer> treeMap = new TreeMap<>(linkedHashMap); // Передача неотсортированной мапы для сортировки
+for (Map.Entry entry : treeMap.entrySet()) {
+    System.out.println("key: " + entry.getKey() + "; value: " + entry.getValue());
+}
+
+//Результат
+key: xxx; value: 5
+key: a; value: 3
+key: ccc; value: 1
+key: b; value: 2
+
+key: a; value: 3
+key: b; value: 2
+key: ccc; value: 1
+key: xxx; value: 5
+```
+
+<a name="hashtable"></a>
+
+## HashTable
+
+HashTable хранит пары ключей/значений в хэш-таблице. В качестве ключа выступает хэш-код переданного объекта, который используется
+как индекс.
 
 ---
 # Set | Множества
@@ -158,5 +223,12 @@ for (int i = 0; i < 5; i++) {
 [0, 4, 6, 9]
 [0, 1, 2, 4, 8]
 [2, 3, 9]
-
 ```
+
+<a name="enumset"></a>
+
+## EnumSet
+Содержит только значения перечисления, принадлежащие к тому же типу перечисления, элементы хранятся в порядке
+их сохранения. Он не позволяет пользователю добавлять значения NULL и создает исключение NullPointerException
+
+---
