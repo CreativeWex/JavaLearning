@@ -5,22 +5,6 @@
 - [Random](#random) <br>
 ---
 
-# Коллекции и структуры данных
-
-* [Map](Collections/README.md#map)
-  * [HashMap](Collections/README.md#hashmap)
-  * [LinkedHashMap](Collections/README.md#linkedmap)
-  * [TreeMap](Collections/README.md#treemap)
-  * [HashTable](Collections/README.md#hashtable)
-    <br><br>
-* [Set](#set)
-  * [HashSet](Collections/README.md#hashset)
-  * [LinkedHashSet](Collections/README.md#linkedhashset)
-  * [TreeSet](Collections/README.md#treeset)
-  * [EnumSet](Collections/README.md#enumset)
-
----
-
 ## Коллекции и структуры данных
 
 * [Enum](Collection/README.md#enum)
