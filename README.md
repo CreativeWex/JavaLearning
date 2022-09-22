@@ -2,15 +2,12 @@
 # Отдельные темы
 
 - [RegEx - Regular Expressions - Регулярные Выражения](#RegEx) <br>
-- [Random](#random) <br>
+- [Класс Random](#random) <br>
+- [Класс File](#file)
 ---
 
 ## Коллекции и структуры данных
 
-* [Enum](Collection/README.md#enum)
-* ArrayList
-* LinkedList
-  <br><br>
 * [Map](Collection/README.md#map)
   * [HashMap](Collection/README.md#hashmap)
   * [LinkedHashMap](Collection/README.md#linkedmap)
@@ -22,6 +19,10 @@
   * [LinkedHashSet](Collection/README.md#linkedhashset)
   * [TreeSet](Collection/README.md#treeset)
   * [EnumSet](Collection/README.md#enumset)
+    <br><br>
+* [Enum](Collection/README.md#enum)
+* [ArrayList](Collection/README.md#arraylist)
+* LinkedList
 
 ---
 
@@ -60,9 +61,41 @@
 - [Чистый код по Р. Мартину](CleanCode.md)
 ---
 
+<a name="file"></a>
+
+# Класс File
+
+Позволяет получить информацию о файле: права доступа, время и дата создания, путь к каталогу. А также осуществлять навигацию по иерархиям подкаталогов.
+
+> Если класс представляет каталог, то его метод list() возвращает массив строк с именами всех файлов.
+
+### Констукторы
+
+* `File(String path)` - указывается путь к файлу без указания имени файла
+* `File(String dirPath, Sring name)` - указывается путь к файлу и имя файла
+* `File(URI uri)` - указывается объекта URI, описывающий файл
+
+### Методы
+
+* `getAbsolutePath()` - абсолютный путь файла, начиная с корня системы. В Android корневым элементом является символ слеша (/)
+* `canRead()` - доступно для чтения
+* `canWrite()` - доступно для записи
+* `exists()` - файл существует или нет
+* `getName()` - возвращает имя файла
+* `getParent()` - возвращает имя родительского каталога
+* `getPath()` - путь
+* `lastModified()` - дата последнего изменения
+* `isFile()` - объект является файлом, а не каталогом
+* `isDirectory` - объект является каталогом
+* `isAbsolute()` - возвращает true, если файл имеет абсолютный путь
+* `renameTo(File newPath)` - переименовывает файл. В параметре указывается имя нового имени файла. Если переименование прошло неудачно, то возвращается false
+* `delete()` - удаляет файл. Также можно удалить пустой каталог
+
+--- 
+
 <a name="random"></a>
 
-# Random
+# Класс Random
 
 ### Методы
 

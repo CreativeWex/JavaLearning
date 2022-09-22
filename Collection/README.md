@@ -1,8 +1,6 @@
 # Коллекции и структуры данных
 ## Содержание
 
-* [Enum](#enum)
-  <br><br>
 * [Map](#map)
     * [HashMap](#hashmap)
     * [LinkedHashMap](#linkedmap)
@@ -14,6 +12,9 @@
     * [LinkedHashSet](#linkedhashset)
     * [TreeSet](#treeset)
     * [EnumSet](#enumset)
+  <br><br>
+* [Enum](#enum)
+* [ArrayList](#arraylist)
 
 ---
 
@@ -50,6 +51,28 @@ enum Color{
   public String getCode(){ return code;}
 }
 ```
+
+---
+
+<a name="arraylist"></a>
+
+## ArrayList
+
+### Конструкторы
+```java
+ArrayList()// создает пустой список
+ArrayList(Collection <? extends E> col)// создает список, в который добавляются все элементы коллекции col.
+```
+### Основные методы
+
+* `void add(int index, E obj)`// добавляет в список по индексу index объект obj
+* `boolean addAll(int index, Collection<? extends E> col)` // добавляет в список по индексу index все элементы коллекции col. Если в результате добавления список был изменен, то возвращается true, иначе возвращается false
+* `E get(int index)` // возвращает объект из списка по индексу index
+* `int indexOf(Object obj)` // возвращает индекс первого вхождения объекта obj в список. Если объект не найден, то возвращается -1
+* `E remove(int index)` // удаляет объект из списка по индексу index, возвращая при этом удаленный объект
+* `E set(int index, E obj)` // присваивает значение объекта obj элементу, который находится по индексу index
+* `void sort(Comparator<? super E> comp)` // сортирует список с помощью компаратора comp
+* `List<E> subList(int start, int end)` // получает набор элементов, которые находятся в списке между индексами start и end
 
 ---
 
