@@ -7,6 +7,26 @@
 
 # Разделы
 
+## Коллекции и структуры данных
+
+* [Enum](Collection/README.md#enum)
+* ArrayList
+* LinkedList
+  <br><br>
+* [Map](Collection/README.md#map)
+  * [HashMap](Collection/README.md#hashmap)
+  * [LinkedHashMap](Collection/README.md#linkedmap)
+  * [TreeMap](Collection/README.md#treemap)
+  * [HashTable](Collection/README.md#hashtable)
+    <br><br>
+* [Set](Collection/README.md#set)
+  * [HashSet](Collection/README.md#hashset)
+  * [LinkedHashSet](Collection/README.md#linkedhashset)
+  * [TreeSet](Collection/README.md#treeset)
+  * [EnumSet](Collection/README.md#enumset)
+
+---
+
 ## ООП
 - [Детали ООП](OOP.md)
 - [Преимущества и недостатки ООП](OOP.md#OOPpluses) 
