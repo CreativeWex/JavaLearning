@@ -60,7 +60,7 @@
 
 - [YAGNI](ProgrammingPrinciples.md#YAGNI)
 - [KISS](ProgrammingPrinciples.md#KISS)
-- [DRY](ProgrammingPrinciples.md#DRY) <br><br>
+- [DRY](ProgrammingPrinciples.md#DRY) 
 - [Чистый код по Р. Мартину](CleanCode.md)
 ---
 
