@@ -119,6 +119,27 @@ List<String> valueList = new ArrayList<>(map.values());
 List<Map.Entry<Integer, String>> entryList = new ArrayList<>(map.entrySet());
 ```
 
+### Счетчик ключей Map
+
+```java
+//map<String, Int> 
+while ((line = bufferedReader.readLine()) != null) {
+            String[] words = line.split("\\W"); {
+                for (String word : words) {
+                    if (word.equals("")) {
+                        continue;
+                    }
+                    if (!map.containsKey(word)) {
+                        map.put(word, 1);
+                    } else {
+                        map.put(word, map.get(word) + 1);
+                    }
+                }
+            }
+        }
+```
+
+
 ### Основные методы
 
 ```java
