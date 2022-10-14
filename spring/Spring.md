@@ -6,13 +6,14 @@
 
 ---
 
+# Конфигурация Spring приложения. XML
+
 ## Содержание
 
 * [DI / IoC](#diIoc)
 * [Application context](#ApplicationContext)
 * [Типичные шаги в работе со Spring](#SpringSteps) 
 * [Способы внедрения зависимостей](#injectionMethods)
-* [Аннотации](#Annotations)
 ---
 <a name = "diIoc"></a>
 
