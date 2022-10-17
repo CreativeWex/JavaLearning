@@ -54,12 +54,15 @@
 * [DI / IoC](spring/Spring.md#diIoc)
 * [Application context](spring/Spring.md#ApplicationContext)
 * [Типичные шаги в работе со Spring](spring/Spring.md#SpringSteps)
-* Конфигурация Spring приложения. XML
+
+Конфигурация Spring приложения. XML
 * [Способы внедрения зависимостей](spring/Spring.md#injectionMethods)
-* Конфигурация Spring приложения. XML + Аннотации
+
+Конфигурация Spring приложения. XML + Аннотации
 * [Аннотации](spring/Annotations.md#Annotations)
 * [Внедрение зависимостей с помощью аннотаций](spring/Annotations.md#DI)
-* Конфигурация Spring приложения. Аннотации + Java код
+
+Конфигурация Spring приложения. Аннотации + Java код
 * [Java-код](spring/javaCode.md)
 ---
 
