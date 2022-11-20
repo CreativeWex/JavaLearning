@@ -1,4 +1,4 @@
-package Singleton;
+package singleton;
 
 public class Singleton {
     private static Singleton instanse = null; // Статический объект
