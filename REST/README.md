@@ -1,6 +1,6 @@
 # REST
 
-* [REST ограничения и принципы](#principles)
+* [Ограничения и принципы](#principles)
 * [Коммуникаия между клиентом и сервером](#communcation)
 * [URI и ресурсы](#URIResources)
 * [Примеры HTTP запросов](#examples)

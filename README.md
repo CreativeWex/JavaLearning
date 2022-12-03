@@ -74,6 +74,15 @@ IoC, DI, Beans, Configuration
 * [View](spring/mvc/README.md#View)
 ---
 
+## REST
+* [RESTful](REST/README.md)
+* [Ограничения и принципы](REST/README.md#principles)
+* [Коммуникаия между клиентом и сервером](REST/README.md#communcation)
+* [URI и ресурсы](REST/README.md#URIResources)
+* [Примеры HTTP запросов](REST/README.md#examples)
+
+---
+
 ## Принципы программирования
 - [Принципы SOLID](ProgrammingPrinciples.md#Solid) - 
   [SRP](ProgrammingPrinciples.md#srp),
