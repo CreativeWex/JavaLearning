@@ -66,6 +66,13 @@ IoC, DI, Beans, Configuration
 - Конфигурация Spring приложения. Аннотации + Java код
   * [Java-код](spring/javaCode.md)
 ---
+## Spring MVC
+* [DispatcherServlet](spring/mvc/README.md#DispatcherServlet)
+* [Controller](spring/mvc/README.md#Controller)
+* [HTTP](spring/mvc/README.md#HTTP)
+* [Model](spring/mvc/README.md#Model)
+* [View](spring/mvc/README.md#View)
+---
 
 ## Принципы программирования
 - [Принципы SOLID](ProgrammingPrinciples.md#Solid) - 
