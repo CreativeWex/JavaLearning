@@ -1,6 +1,4 @@
-package com.restful.app.restexampleapp.service;
-
-import com.restful.app.restexampleapp.model.Client;
+package Architecture.REST;
 
 import java.util.List;
 

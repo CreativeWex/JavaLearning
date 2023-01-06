@@ -105,7 +105,7 @@ public class PersonController {
 
 ### HTTP
 
-[Примеры запросов](../../REST/README.md/#examples)
+[Примеры запросов](../../Architecture/REST/README.md/#examples)
 
 <a name = "HTTP"></a>
 

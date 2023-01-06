@@ -61,7 +61,7 @@
 Коммуникация проходит путем запросов-ответов.
 
 Запросы состоят содержат:
-- [HTTP метод](../spring/mvc/README.md#HTTP);
+- [HTTP метод](../Spring/mvc/README.md#HTTP);
 - [заголовок](https://ru.wikipedia.org/wiki/Список_заголовков_HTTP);
 - URI;
 - тело запроса - JSON или XML.

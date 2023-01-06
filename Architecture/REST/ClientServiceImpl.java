@@ -1,6 +1,5 @@
-package com.restful.app.restexampleapp.service;
+package Architecture.REST;
 
-import com.restful.app.restexampleapp.model.Client;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;

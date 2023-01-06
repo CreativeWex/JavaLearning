@@ -122,7 +122,7 @@ pstmt.executeUpdate();
 
 # Jdbc Template
 
-Зависимость `spring jdbc`
+Зависимость `Spring jdbc`
 
 Обертка вокруг JDBC API, которая предоставляется Spring Framework
 
