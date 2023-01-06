@@ -1,4 +1,4 @@
-package Lists.LinkedList;
+package Algorithms.Lists.LinkedList;
 
 public interface LinkedList {
     public void display();

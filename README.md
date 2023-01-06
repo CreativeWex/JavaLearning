@@ -1,75 +1,101 @@
 <a name="Begin"></a>
 
-# Содержание 
-
-* [Коллекции и структуры данных ✅](#Collections)
-* [ООП ✅](#OOP)
-* [JDBC ✅](#JDBC)
-* [Шаблоны проектирования ✅](#Patterns)
-* [Spring Core ✅](#SpringCore)
-* [Spring MVC ✅](#SpringMVC)
-* [REST ✅](#REST)
-* [Принципы программирования ✅](#ProgrammingPrinciples)
-
-
-# Отдельные темы
-
-- [RegEx - Regular Expressions - Регулярные Выражения](#RegEx) <br>
-- [Класс Random](#random) <br>
-- [Класс File](#file)
----
-
-<a name="Collections"></a>
-
-## Коллекции и структуры данных
-
-* [Map](Collection/README.md#map)
-  * [HashMap](Collection/README.md#hashmap)
-  * [LinkedHashMap](Collection/README.md#linkedmap)
-  * [TreeMap](Collection/README.md#treemap)
-  * [HashTable](Collection/README.md#hashtable)
-* [Set](Collection/README.md#set)
-  * [HashSet](Collection/README.md#hashset)
-  * [LinkedHashSet](Collection/README.md#linkedhashset)
-  * [TreeSet](Collection/README.md#treeset)
-  * [EnumSet](Collection/README.md#enumset)
-* [Enum](Collection/README.md#enum)
-* [ArrayList](Collection/README.md#arraylist)
-* LinkedList
-
+# Содержание
+* Java
+  * [Классы | ООП](#OOP)
+  * [Коллекции | Структуры данных](#Collections)
+* Базы данных
+  * [Базы данных | JDBC API | Jdbc Template](#JDBC)
+* Spring
+  * [Spring Core](#SpringCore)
+  * [Spring MVC](#SpringMVC)
+* Архитектура
+  * [Архитектурные паттерны | Принципы проектирования](#Patterns)
+  * [REST | HTTP](#REST)
+* Прочее 
+  * [RegEx - Regular Expressions - Регулярные Выражения](#RegEx) <br>
+  * [Класс Random](#random) <br>
+  * [Класс File](#file)
 ---
 
 <a name="OOP"></a>
 
-## ООП
-- [Детали ООП](OOP.md)
-- [Преимущества и недостатки ООП](OOP.md#OOPpluses) 
-- [Статическое и динамическое связывание](OOP.md#OOPbinding)
-- [Инкапсуляция и реализации сокрытия](OOP.md#OOPIncaps)
-- [Наследование](OOP.md#OOPInherit)
-- [Полиморфизм](OOP.md#OOPPolymorph)
-- [Абстракция](OOP.md#Abstract)
-- [Обмен сообщениями](OOP.md#Letters)
+## Классы | ООП
+- ООП
+  - [Детали ООП](Java/OOP.md)
+  - [Преимущества и недостатки ООП](Java/OOP.md#OOPpluses)
+  - [Статическое и динамическое связывание](Java/OOP.md#OOPbinding)
+  - [Инкапсуляция и реализации сокрытия](Java/OOP.md#OOPIncaps)
+- Парадигмы ООП
+  - [Наследование](Java/OOP.md#OOPInherit)
+  - [Полиморфизм](Java/OOP.md#OOPPolymorph)
+  - [Абстракция](Java/OOP.md#Abstract)
+  - [Обмен сообщениями](Java/OOP.md#Letters)
+
+---
+
+<a name="Collections"></a>
+
+## Коллекции | Структуры данных
+* Интерфейс Map
+  * [Map](Java/Collection/README.md#map)
+  * [HashMap](Java/Collection/README.md#hashmap)
+  * [LinkedHashMap](Java/Collection/README.md#linkedmap)
+  * [TreeMap](Java/Collection/README.md#treemap)
+  * [HashTable](Java/Collection/README.md#hashtable)
+* Интерфейс Collection
+  * [Set](Java/Collection/README.md#set)
+  * [HashSet](Java/Collection/README.md#hashset)
+  * [LinkedHashSet](Java/Collection/README.md#linkedhashset)
+  * [TreeSet](Java/Collection/README.md#treeset)
+  * List
+  * [ArrayList](Java/Collection/README.md#arraylist)
+  * LinkedList
+  * Queue
+  * Deque
+* Перечисления
+  * [Enum](Java/Collection/README.md#enum)
+  * [EnumSet](Java/Collection/README.md#enumset)
+
 
 ---
 
 <a name="JDBC"></a>
 
-## JDBC
-* [Пример создания соединения](Database.md#connection)
-* [Statement - создание SQL-выражений](Database.md#statement)
-* [PreparedStatement](Database.md#preparedStatement)
-* [Выполнение SQL-выражений](Database.md#execute)
+## Базы данных | JDBC API | Jdbc Template
+* JDBC API
+  * [Пример создания соединения](Databases/Database.md#connection)
+  * [Statement - создание SQL-выражений](Databases/Database.md#statement)
+  * [PreparedStatement](Databases/Database.md#preparedStatement)
+  * [Выполнение SQL-выражений](Databases/Database.md#execute)
+* JdbcTemplate
+  * [JdbcTemplate](Databases/Database.md#JdbcTemplate)
+  * [Алгоритм работы с JdbcTemplate](Databases/Database.md#JdbcTemplateSteps)
+  * [RowMapper](Databases/Database.md#RowMapper)
+  * [Выполнение запросов](Databases/Database.md#JdbcTemplateExecution)
 ---
 
 <a name="Patterns"></a>
 
-## Шаблоны проектирования
+## Архитектурные паттерны | Принципы проектирования
 
-* [Краткая информация и реализация](Patterns/)
-* [Порождающие](Patterns/README.md#instantiate)
-* [Структурные](Patterns/README.md#structure)
-* [Поведенческие](Patterns/README.md#responsibilities)
+* Паттерны
+  * [Виды и реализация](Patterns/)
+  * [Порождающие](Patterns/README.md#instantiate)
+  * [Структурные](Patterns/README.md#structure)
+  * [Поведенческие](Patterns/README.md#responsibilities)
+* Принципы проектирования
+  * [Принципы SOLID](Architecture/ProgrammingPrinciples.md#Solid) -
+    [SRP](Architecture/ProgrammingPrinciples.md#srp),
+    [OCP](Architecture/ProgrammingPrinciples.md#OCP),
+    [LSP](Architecture/ProgrammingPrinciples.md#LSP),
+    [ISP](Architecture/ProgrammingPrinciples.md#ISP),
+    [DIP](Architecture/ProgrammingPrinciples.md#DIP)
+
+  * [YAGNI](Architecture/ProgrammingPrinciples.md#YAGNI)
+  * [KISS](Architecture/ProgrammingPrinciples.md#KISS)
+  * [DRY](Architecture/ProgrammingPrinciples.md#DRY)
+  * [Чистый код по Р. Мартину](Architecture/CleanCode.md)
 
 ---
 
@@ -78,57 +104,44 @@
 ## Spring Core
 IoC, DI, Beans, Configuration
 
-* [DI / IoC](spring/Spring.md#diIoc)
-* [Application context](spring/Spring.md#ApplicationContext)
-* [Типичные шаги в работе со Spring](spring/Spring.md#SpringSteps)
+* [DI / IoC](Spring/core/Spring.md#diIoc)
+* [Application context](Spring/core/Spring.md#ApplicationContext)
+* [Типичные шаги в работе со Spring](Spring/core/Spring.md#SpringSteps)
+* Конфигурация Spring приложения. XML
+  * [Способы внедрения зависимостей](Spring/core/Spring.md#injectionMethods)
 
-- Конфигурация Spring приложения. XML
-  * [Способы внедрения зависимостей](spring/Spring.md#injectionMethods)
+* Конфигурация Spring приложения. XML + Аннотации
+  * [Аннотации](Spring/core/Annotations.md#Annotations)
+  * [Внедрение зависимостей с помощью аннотаций](Spring/core/Annotations.md#DI)
 
-- Конфигурация Spring приложения. XML + Аннотации
-  * [Аннотации](spring/Annotations.md#Annotations)
-  * [Внедрение зависимостей с помощью аннотаций](spring/Annotations.md#DI)
-
-- Конфигурация Spring приложения. Аннотации + Java код
-  * [Java-код](spring/javaCode.md)
+* Конфигурация Spring приложения. Аннотации + Java код
+  * [Java-код](Spring/core/javaCode.md)
 ---
 
 <a name="SpringMVC"></a>
 
 ## Spring MVC
-* [DispatcherServlet](spring/mvc/README.md#DispatcherServlet)
-* [Controller](spring/mvc/README.md#Controller)
-* [HTTP](spring/mvc/README.md#HTTP)
-* [Model](spring/mvc/README.md#Model)
-* [View](spring/mvc/README.md#View)
+* [DispatcherServlet](Spring/mvc/README.md#DispatcherServlet)
+* [Controller](Spring/mvc/README.md#Controller)
+* [HTTP](Spring/mvc/README.md#HTTP)
+* [Model](Spring/mvc/README.md#Model)
+* [View](Spring/mvc/README.md#View)
 ---
 
 <a name="REST"></a>
 
-## REST
-* [RESTful](REST/README.md)
-* [Ограничения и принципы](REST/README.md#principles)
-* [Коммуникаия между клиентом и сервером](REST/README.md#communcation)
-* [URI и ресурсы](REST/README.md#URIResources)
-* [Примеры HTTP запросов](REST/README.md#examples)
-
+## REST | HTTP
+* REST
+  * [RESTful](Architecture/REST/README.md)
+  * [Ограничения и принципы](Architecture/REST/README.md#principles)
+* Протокол HTTP
+  * [HTTP](Spring/mvc/README.md#HTTP)
+  * [Коммуникаия между клиентом и сервером](Architecture/REST/README.md#communcation)
+  * [URI и ресурсы](Architecture/REST/README.md#URIResources)
+  * [Примеры HTTP запросов](Architecture/REST/README.md#examples)
 ---
 
-<a name="ProgrammingPrinciples"></a>
-
-## Принципы программирования
-- [Принципы SOLID](ProgrammingPrinciples.md#Solid) - 
-  [SRP](ProgrammingPrinciples.md#srp),
-  [OCP](ProgrammingPrinciples.md#OCP),
-  [LSP](ProgrammingPrinciples.md#LSP),
-  [ISP](ProgrammingPrinciples.md#ISP),
-  [DIP](ProgrammingPrinciples.md#DIP)
-
-- [YAGNI](ProgrammingPrinciples.md#YAGNI)
-- [KISS](ProgrammingPrinciples.md#KISS)
-- [DRY](ProgrammingPrinciples.md#DRY) 
-- [Чистый код по Р. Мартину](CleanCode.md)
----
+# Отдельные темы
 
 <a name="file"></a>
 

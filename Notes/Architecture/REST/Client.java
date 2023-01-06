@@ -1,4 +1,4 @@
-package com.restful.app.restexampleapp.model;
+package Notes.Architecture.REST;
 
 public class Client {
 

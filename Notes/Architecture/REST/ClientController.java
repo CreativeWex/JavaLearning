@@ -1,7 +1,5 @@
-package controller;
+package Notes.Architecture.REST;
 
-import com.restful.app.restexampleapp.model.Client;
-import com.restful.app.restexampleapp.service.ClientService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
