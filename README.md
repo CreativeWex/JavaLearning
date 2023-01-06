@@ -1,52 +1,62 @@
 <a name="Begin"></a>
 
-# Содержание 
+# Содержание
+* Java
+  * [Классы | ООП](#OOP)
+  * [Коллекции | Структуры данных](#Collections)
+* Базы данных
+  * [Базы данных | JDBC API | Jdbc Template](#JDBC)
+* Spring
+  * [Spring Core](#SpringCore)
+  * [Spring MVC](#SpringMVC)
+* Архитектура
+  * [Архитектурные паттерны | Принципы проектирования](#Patterns)
+  * [REST | HTTP](#REST)
+* Прочее 
+  * [RegEx - Regular Expressions - Регулярные Выражения](#RegEx) <br>
+  * [Класс Random](#random) <br>
+  * [Класс File](#file)
+---
 
-* [Коллекции и структуры данных ✅](#Collections)
-* [ООП ✅](#OOP)
-* [JDBC ✅](#JDBC)
-* [Шаблоны проектирования ✅](#Patterns)
-* [Spring Core ✅](#SpringCore)
-* [Spring MVC ✅](#SpringMVC)
-* [REST ✅](#REST)
-* [Принципы программирования ✅](#ProgrammingPrinciples)
+<a name="OOP"></a>
+
+## Классы | ООП
+- ООП
+  - [Детали ООП](OOP.md)
+  - [Преимущества и недостатки ООП](OOP.md#OOPpluses)
+  - [Статическое и динамическое связывание](OOP.md#OOPbinding)
+  - [Инкапсуляция и реализации сокрытия](OOP.md#OOPIncaps)
+- Парадигмы ООП
+  - [Наследование](OOP.md#OOPInherit)
+  - [Полиморфизм](OOP.md#OOPPolymorph)
+  - [Абстракция](OOP.md#Abstract)
+  - [Обмен сообщениями](OOP.md#Letters)
 
 ---
 
 <a name="Collections"></a>
 
-## Коллекции и структуры данных
-
-* [Map](Algorithms/Collection/README.md#map)
+## Коллекции | Структуры данных
+* Интерфейс Map
+  * [Map](Algorithms/Collection/README.md#map)
   * [HashMap](Algorithms/Collection/README.md#hashmap)
   * [LinkedHashMap](Algorithms/Collection/README.md#linkedmap)
   * [TreeMap](Algorithms/Collection/README.md#treemap)
   * [HashTable](Algorithms/Collection/README.md#hashtable)
-* [Set](Algorithms/Collection/README.md#set)
+* Интерфейс Collection
+  * [Set](Algorithms/Collection/README.md#set)
   * [HashSet](Algorithms/Collection/README.md#hashset)
   * [LinkedHashSet](Algorithms/Collection/README.md#linkedhashset)
   * [TreeSet](Algorithms/Collection/README.md#treeset)
-  * [EnumSet](Algorithms/Collection/README.md#enumset)
-* [Enum](Algorithms/Collection/README.md#enum)
-* List
+  * List
   * [ArrayList](Algorithms/Collection/README.md#arraylist)
   * LinkedList
-* Queue
-* Deque
+  * Queue
+  * Deque
+* Перечисления
+  * [Enum](Algorithms/Collection/README.md#enum)
+  * [EnumSet](Algorithms/Collection/README.md#enumset)
 
----
-
-<a name="OOP"></a>
-
-## ООП | Работа с классами
-- [Детали ООП](OOP.md)
-- [Преимущества и недостатки ООП](OOP.md#OOPpluses) 
-- [Статическое и динамическое связывание](OOP.md#OOPbinding)
-- [Инкапсуляция и реализации сокрытия](OOP.md#OOPIncaps)
-- [Наследование](OOP.md#OOPInherit)
-- [Полиморфизм](OOP.md#OOPPolymorph)
-- [Абстракция](OOP.md#Abstract)
-- [Обмен сообщениями](OOP.md#Letters)
 
 ---
 
@@ -60,19 +70,32 @@
   * [Выполнение SQL-выражений](Database.md#execute)
 * JdbcTemplate
   * [JdbcTemplate](Database.md#JdbcTemplate)
-  * [JdbcTemplateSteps](Database.md#JdbcTemplateSteps)
+  * [Алгоритм работы с JdbcTemplate](Database.md#JdbcTemplateSteps)
   * [RowMapper](Database.md#RowMapper)
   * [Выполнение запросов](Database.md#JdbcTemplate Execution)
 ---
 
 <a name="Patterns"></a>
 
-## Шаблоны проектирования
+## Архитектурные паттерны | Принципы проектирования
 
-* [Виды и реализация](Patterns/)
-* [Порождающие](Patterns/README.md#instantiate)
-* [Структурные](Patterns/README.md#structure)
-* [Поведенческие](Patterns/README.md#responsibilities)
+* Паттерны
+  * [Виды и реализация](Patterns/)
+  * [Порождающие](Patterns/README.md#instantiate)
+  * [Структурные](Patterns/README.md#structure)
+  * [Поведенческие](Patterns/README.md#responsibilities)
+* Принципы проектирования
+  * [Принципы SOLID](ProgrammingPrinciples.md#Solid) -
+    [SRP](ProgrammingPrinciples.md#srp),
+    [OCP](ProgrammingPrinciples.md#OCP),
+    [LSP](ProgrammingPrinciples.md#LSP),
+    [ISP](ProgrammingPrinciples.md#ISP),
+    [DIP](ProgrammingPrinciples.md#DIP)
+
+  * [YAGNI](ProgrammingPrinciples.md#YAGNI)
+  * [KISS](ProgrammingPrinciples.md#KISS)
+  * [DRY](ProgrammingPrinciples.md#DRY)
+  * [Чистый код по Р. Мартину](CleanCode.md)
 
 ---
 
@@ -107,37 +130,18 @@ IoC, DI, Beans, Configuration
 
 <a name="REST"></a>
 
-## REST
-* [RESTful](REST/README.md)
-* [Ограничения и принципы](REST/README.md#principles)
-* [Коммуникаия между клиентом и сервером](REST/README.md#communcation)
-* [URI и ресурсы](REST/README.md#URIResources)
-* [Примеры HTTP запросов](REST/README.md#examples)
-
----
-
-<a name="ProgrammingPrinciples"></a>
-
-## Принципы программирования
-- [Принципы SOLID](ProgrammingPrinciples.md#Solid) - 
-  [SRP](ProgrammingPrinciples.md#srp),
-  [OCP](ProgrammingPrinciples.md#OCP),
-  [LSP](ProgrammingPrinciples.md#LSP),
-  [ISP](ProgrammingPrinciples.md#ISP),
-  [DIP](ProgrammingPrinciples.md#DIP)
-
-- [YAGNI](ProgrammingPrinciples.md#YAGNI)
-- [KISS](ProgrammingPrinciples.md#KISS)
-- [DRY](ProgrammingPrinciples.md#DRY) 
-- [Чистый код по Р. Мартину](CleanCode.md)
+## REST | HTTP
+* REST
+  * [RESTful](REST/README.md)
+  * [Ограничения и принципы](REST/README.md#principles)
+* Протокол HTTP
+  * [HTTP](spring/mvc/README.md#HTTP)
+  * [Коммуникаия между клиентом и сервером](REST/README.md#communcation)
+  * [URI и ресурсы](REST/README.md#URIResources)
+  * [Примеры HTTP запросов](REST/README.md#examples)
 ---
 
 # Отдельные темы
-
-- [RegEx - Regular Expressions - Регулярные Выражения](#RegEx) <br>
-- [Класс Random](#random) <br>
-- [Класс File](#file)
----
 
 <a name="file"></a>
 
