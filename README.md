@@ -1,14 +1,14 @@
 <a name="Begin"></a>
 
 # Содержание
-* Notes.Java
+* Java
   * [Классы | ООП](#OOP)
   * [Коллекции | Структуры данных](#Collections)
 * Базы данных
   * [Базы данных | JDBC API | Jdbc Template](#JDBC)
-* Notes.Spring
-  * [Notes.Spring Core](#SpringCore)
-  * [Notes.Spring MVC](#SpringMVC)
+* Spring
+  * [Spring Core](#SpringCore)
+  * [Spring MVC](#SpringMVC)
 * Архитектура
   * [Архитектурные паттерны | Принципы проектирования](#Patterns)
   * [REST | HTTP](#REST)
@@ -101,26 +101,26 @@
 
 <a name="SpringCore"></a>
 
-## Notes.Spring Core
+## Spring Core
 IoC, DI, Beans, Configuration
 
 * [DI / IoC](Spring/core/Spring.md#diIoc)
 * [Application context](Spring/core/Spring.md#ApplicationContext)
-* [Типичные шаги в работе со Notes.Spring](Spring/core/Spring.md#SpringSteps)
-* Конфигурация Notes.Spring приложения. XML
+* [Типичные шаги в работе со Spring](Spring/core/Spring.md#SpringSteps)
+* Конфигурация Spring приложения. XML
   * [Способы внедрения зависимостей](Spring/core/Spring.md#injectionMethods)
 
-* Конфигурация Notes.Spring приложения. XML + Аннотации
+* Конфигурация Spring приложения. XML + Аннотации
   * [Аннотации](Spring/core/Annotations.md#Annotations)
   * [Внедрение зависимостей с помощью аннотаций](Spring/core/Annotations.md#DI)
 
-* Конфигурация Notes.Spring приложения. Аннотации + Notes.Java код
-  * [Notes.Java-код](Spring/core/javaCode.md)
+* Конфигурация Spring приложения. Аннотации + Java код
+  * [Java-код](Spring/core/javaCode.md)
 ---
 
 <a name="SpringMVC"></a>
 
-## Notes.Spring MVC
+## Spring MVC
 * [DispatcherServlet](Spring/mvc/README.md#DispatcherServlet)
 * [Controller](Spring/mvc/README.md#Controller)
 * [HTTP](Spring/mvc/README.md#HTTP)
