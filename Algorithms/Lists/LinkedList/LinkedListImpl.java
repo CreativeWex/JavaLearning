@@ -1,4 +1,4 @@
-package Lists.LinkedList;
+package Algorithms.Lists.LinkedList;
 
 public class LinkedListImpl implements LinkedList{
     Node head;

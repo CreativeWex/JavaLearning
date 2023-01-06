@@ -11,37 +11,34 @@
 * [REST ✅](#REST)
 * [Принципы программирования ✅](#ProgrammingPrinciples)
 
-
-# Отдельные темы
-
-- [RegEx - Regular Expressions - Регулярные Выражения](#RegEx) <br>
-- [Класс Random](#random) <br>
-- [Класс File](#file)
 ---
 
 <a name="Collections"></a>
 
 ## Коллекции и структуры данных
 
-* [Map](Collection/README.md#map)
-  * [HashMap](Collection/README.md#hashmap)
-  * [LinkedHashMap](Collection/README.md#linkedmap)
-  * [TreeMap](Collection/README.md#treemap)
-  * [HashTable](Collection/README.md#hashtable)
-* [Set](Collection/README.md#set)
-  * [HashSet](Collection/README.md#hashset)
-  * [LinkedHashSet](Collection/README.md#linkedhashset)
-  * [TreeSet](Collection/README.md#treeset)
-  * [EnumSet](Collection/README.md#enumset)
-* [Enum](Collection/README.md#enum)
-* [ArrayList](Collection/README.md#arraylist)
-* LinkedList
+* [Map](Algorithms/Collection/README.md#map)
+  * [HashMap](Algorithms/Collection/README.md#hashmap)
+  * [LinkedHashMap](Algorithms/Collection/README.md#linkedmap)
+  * [TreeMap](Algorithms/Collection/README.md#treemap)
+  * [HashTable](Algorithms/Collection/README.md#hashtable)
+* [Set](Algorithms/Collection/README.md#set)
+  * [HashSet](Algorithms/Collection/README.md#hashset)
+  * [LinkedHashSet](Algorithms/Collection/README.md#linkedhashset)
+  * [TreeSet](Algorithms/Collection/README.md#treeset)
+  * [EnumSet](Algorithms/Collection/README.md#enumset)
+* [Enum](Algorithms/Collection/README.md#enum)
+* List
+  * [ArrayList](Algorithms/Collection/README.md#arraylist)
+  * LinkedList
+* Queue
+* Deque
 
 ---
 
 <a name="OOP"></a>
 
-## ООП
+## ООП | Работа с классами
 - [Детали ООП](OOP.md)
 - [Преимущества и недостатки ООП](OOP.md#OOPpluses) 
 - [Статическое и динамическое связывание](OOP.md#OOPbinding)
@@ -55,18 +52,24 @@
 
 <a name="JDBC"></a>
 
-## JDBC
-* [Пример создания соединения](Database.md#connection)
-* [Statement - создание SQL-выражений](Database.md#statement)
-* [PreparedStatement](Database.md#preparedStatement)
-* [Выполнение SQL-выражений](Database.md#execute)
+## Базы данных | JDBC API | Jdbc Template
+* JDBC API
+  * [Пример создания соединения](Database.md#connection)
+  * [Statement - создание SQL-выражений](Database.md#statement)
+  * [PreparedStatement](Database.md#preparedStatement)
+  * [Выполнение SQL-выражений](Database.md#execute)
+* JdbcTemplate
+  * [JdbcTemplate](Database.md#JdbcTemplate)
+  * [JdbcTemplateSteps](Database.md#JdbcTemplateSteps)
+  * [RowMapper](Database.md#RowMapper)
+  * [Выполнение запросов](Database.md#JdbcTemplate Execution)
 ---
 
 <a name="Patterns"></a>
 
 ## Шаблоны проектирования
 
-* [Краткая информация и реализация](Patterns/)
+* [Виды и реализация](Patterns/)
 * [Порождающие](Patterns/README.md#instantiate)
 * [Структурные](Patterns/README.md#structure)
 * [Поведенческие](Patterns/README.md#responsibilities)
@@ -78,19 +81,18 @@
 ## Spring Core
 IoC, DI, Beans, Configuration
 
-* [DI / IoC](spring/Spring.md#diIoc)
-* [Application context](spring/Spring.md#ApplicationContext)
-* [Типичные шаги в работе со Spring](spring/Spring.md#SpringSteps)
+* [DI / IoC](spring/core/Spring.md#diIoc)
+* [Application context](spring/core/Spring.md#ApplicationContext)
+* [Типичные шаги в работе со Spring](spring/core/Spring.md#SpringSteps)
+* Конфигурация Spring приложения. XML
+  * [Способы внедрения зависимостей](spring/core/Spring.md#injectionMethods)
 
-- Конфигурация Spring приложения. XML
-  * [Способы внедрения зависимостей](spring/Spring.md#injectionMethods)
+* Конфигурация Spring приложения. XML + Аннотации
+  * [Аннотации](spring/core/Annotations.md#Annotations)
+  * [Внедрение зависимостей с помощью аннотаций](spring/core/Annotations.md#DI)
 
-- Конфигурация Spring приложения. XML + Аннотации
-  * [Аннотации](spring/Annotations.md#Annotations)
-  * [Внедрение зависимостей с помощью аннотаций](spring/Annotations.md#DI)
-
-- Конфигурация Spring приложения. Аннотации + Java код
-  * [Java-код](spring/javaCode.md)
+* Конфигурация Spring приложения. Аннотации + Java код
+  * [Java-код](spring/core/javaCode.md)
 ---
 
 <a name="SpringMVC"></a>
@@ -128,6 +130,13 @@ IoC, DI, Beans, Configuration
 - [KISS](ProgrammingPrinciples.md#KISS)
 - [DRY](ProgrammingPrinciples.md#DRY) 
 - [Чистый код по Р. Мартину](CleanCode.md)
+---
+
+# Отдельные темы
+
+- [RegEx - Regular Expressions - Регулярные Выражения](#RegEx) <br>
+- [Класс Random](#random) <br>
+- [Класс File](#file)
 ---
 
 <a name="file"></a>

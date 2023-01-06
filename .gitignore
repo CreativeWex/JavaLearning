@@ -2,7 +2,7 @@
 *.iml
 out
 Collections/Map
-CodeWars/.idea
+Algorithms/CodeWars/.idea
 CodeWars/*.iml
 CodeWars/4 kyu/*.iml
 CodeWars/5 kyu/*.iml
