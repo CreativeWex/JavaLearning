@@ -1,4 +1,4 @@
-# Java и базы данных
+# Notes.Java и базы данных
 
 ## Содержание
 JDBC API
@@ -122,9 +122,9 @@ pstmt.executeUpdate();
 
 # Jdbc Template
 
-Зависимость `Spring jdbc`
+Зависимость `Notes.Spring jdbc`
 
-Обертка вокруг JDBC API, которая предоставляется Spring Framework
+Обертка вокруг JDBC API, которая предоставляется Notes.Spring Framework
 
 1. Сокращает код за счет отсутствия создания `Connection`, `Statement`, работы с `ResultSet`.
 2. Предотвращает дублирование кода

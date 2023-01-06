@@ -1,4 +1,4 @@
-# Spring MVC
+# Notes.Spring MVC
 
 * [DispatcherServlet](#DispatcherServlet)
 * [Controller](#Controller)
@@ -26,12 +26,12 @@
 
 ## DispatcherServlet
 
-Входная точка Spring MVC приложения. Находится между `Controller`
+Входная точка Notes.Spring MVC приложения. Находится между `Controller`
 и `HTTP Request`
 
 HTTP запрос от пользователя:
 1. Приходит на сервер. Сервер обрабатывает запрос и передает
-его на Spring MVC приложение.
+его на Notes.Spring MVC приложение.
 2. Запрос попадает в DispatcherServlet.
 3. DispatcherServlet отправляет запрос на правильный контроллер.
 

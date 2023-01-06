@@ -1,4 +1,4 @@
-package Architecture.REST;
+package Notes.Architecture.REST;
 
 import java.util.List;
 

@@ -1,4 +1,4 @@
-package Architecture.REST;
+package Notes.Architecture.REST;
 
 import org.springframework.stereotype.Service;
 
