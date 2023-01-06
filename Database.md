@@ -10,7 +10,7 @@ JDBC API
 [JdbcTemplate](#JdbcTemplate)
 * [JdbcTemplateSteps](#JdbcTemplateSteps)
 * [RowMapper](#RowMapper)
-* [JdbcTemplate Execution](#JdbcTemplate Execution)
+* [JdbcTemplate Execution](#JdbcTemplateExecution)
 
 # JDBC API
 
@@ -195,7 +195,7 @@ public List<Person> index() {
 }
 ```
 
-<a name = "JdbcTemplate Execution"></a>
+<a name = "JdbcTemplateExecution"></a>
 
 ### 4. Выполнение запроса
 

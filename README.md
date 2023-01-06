@@ -72,7 +72,7 @@
   * [JdbcTemplate](Database.md#JdbcTemplate)
   * [Алгоритм работы с JdbcTemplate](Database.md#JdbcTemplateSteps)
   * [RowMapper](Database.md#RowMapper)
-  * [Выполнение запросов](Database.md#JdbcTemplate Execution)
+  * [Выполнение запросов](Database.md#JdbcTemplateExecution)
 ---
 
 <a name="Patterns"></a>
