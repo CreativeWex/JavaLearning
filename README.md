@@ -5,6 +5,7 @@
   * [Классы | ООП](#OOP)
   * [Коллекции | Структуры данных](#Collections)
 * Базы данных
+  * [PostgreSQL](Notes/Databases/postgreSQL)
   * [Базы данных | JDBC API | Jdbc Template](#JDBC)
 * Spring
   * [Spring Core](#SpringCore)
@@ -75,6 +76,12 @@
   * [Алгоритм работы с JdbcTemplate](Notes/Databases/Database.md#JdbcTemplateSteps)
   * [RowMapper](Notes/Databases/Database.md#RowMapper)
   * [Выполнение запросов](Notes/Databases/Database.md#JdbcTemplateExecution)
+* Конфигурация
+  * [Получение доступа к значениям из файла свойств](Notes/Databases/Configuration.md#DatabaseConfiguration)
+  * [Использование аннотации Value](Notes/Databases/Configuration.md#ValueAnnotation)
+  * [Абстракция среды Spring](Notes/Databases/Configuration.md#BootConfiguration)
+* Оптимизация
+  * [Batch Update | Пакетное обновление](Notes/Databases/Database.md#BatchUpdate)
 ---
 
 <a name="Patterns"></a>
