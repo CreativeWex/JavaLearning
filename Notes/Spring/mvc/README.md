@@ -1,4 +1,4 @@
-# Notes.Spring MVC
+# Spring MVC
 
 * [DispatcherServlet](#DispatcherServlet)
 * [Controller](#Controller)
@@ -6,9 +6,14 @@
   * [@RequestMapping](#RequestMapping)
   * [@RequestParam](#RequestMapping)
 * [HTTP методы](#HTTP)
+* [Ответы сервера](#ServerAnswers)
 * [Model](#Model)
   * [@ModelAttribute](#ModelAttribute)
 * [View](#View)
+* [Thymeleaf](#thymeleaf)
+  * [Синтаксис](#th:synt)
+  * [Форма | th:method | th:action | th:object](#th:form)
+  * [Перебор Элементов | th:each](#th:each)
 
 Предполагает разработку web-приложений с использованием архитектуры Model - View - Controller.
 
@@ -26,12 +31,12 @@
 
 ## DispatcherServlet
 
-Входная точка Notes.Spring MVC приложения. Находится между `Controller`
+Входная точка Spring MVC приложения. Находится между `Controller`
 и `HTTP Request`
 
 HTTP запрос от пользователя:
 1. Приходит на сервер. Сервер обрабатывает запрос и передает
-его на Notes.Spring MVC приложение.
+его на Spring MVC приложение.
 2. Запрос попадает в DispatcherServlet.
 3. DispatcherServlet отправляет запрос на правильный контроллер.
 
@@ -119,6 +124,8 @@ public class PersonController {
 | DELETE     | @DeleteMapping | Удаляет указанный ресурс                                                                                                                                                                                                                                                                                                                                                                                                                                                       |
 | PATCH      | @PatchMapping  | Частично изменяет ресурс                                                                                                                                                                                                                                                                                                                                                                                                                                                       |
 
+<a name = "ServerAnswers"></a>
+
 #### HTTP-Ответы
 
 * 200 - все ОК
@@ -190,3 +197,90 @@ public String create(@ModelAttribute("person") Person person) {
 - Получает данные от контроллера и отображает их в браузере
 - Для динамического отображения данных используются шаблонизаторы
   (`Thymeleaf`, `Freemaker`, `Velocity`)
+
+<a name = "thymeleaf"></a>
+
+## Thymeleaf
+
+<a name = "th:synt"></a>
+
+* Простые выражения:
+  * **Переменная**: ${...}
+  * **Выбранная переменная**: *{...}
+  * **Сообщение**: #{...}
+  * **Ссылка URL**: @{...}
+  * **Фрагмент**: ~{...}
+* Литералы/Literals:
+  * **Текст**: 'one text', 'Another one!',...
+  * **Число**: 0, 34, 3.0, 12.3,...
+  * **Boolean**: true, false
+  * **Null**: null
+  * **Токены**: one, sometext, main,...
+* Текст:
+  * **Соединение строк**: +
+  * **Подстроки**: |The name is ${name}|
+* Арифметика:
+  * **Binary**: +, -, *, /, %
+  * **Минус (unary operator)**: -
+* Boolean:
+  * **Binary**: and, or
+  * **Boolean отрицание (unary operator)**: !, not
+* Сравнение и равенство:
+  * **Сравнение**: >, <, >=, <= (gt, lt, ge, le)
+  * **Равенство**: ==, != (eq, ne)
+* Условные:
+  * **If-then**: (if)? (then)
+  * **If-then-else**: (if)? (then): (else)
+  * **Default: (value) ?**: (defaultvalue)
+* Специальные токены:
+  * **No-Operation**: _
+
+### Пример
+
+Контроллер:
+```java
+@GetMapping("/new")
+public String newPerson(Model model) {
+      model.addAttribute("person", new Person()); // добавляем объект по ключу "person"
+      return "people/new"; // имя представления для отображения
+}
+```
+
+### Представление new.html
+
+<a name = "th:form"></a>
+
+#### Форма | th:method | th:action | th:object
+
+```java
+<form th:method="POST" th:action="@{/people}" th:object="${person}">
+
+    <label for="name">Enter name: </label>
+    <input type="text" th:field="*{name}" id="name"/>
+    <br>
+
+    <label for="email">Enter email: </label>
+    <input type="text" th:field="*{email}" id="email">
+    <br>
+
+    <input type="submit" value="Create"/>
+</form>
+```
+**th:method**="HTTP метод"  
+**th:action**="Для какой страницы сохраняем данные"  
+**th:object**="используемый объект"
+
+<br>
+
+<a name = "th:each"></a>
+
+#### Перебор Элементов | th:each
+
+```java
+<div th:each="person : ${peopleList}">
+    <a th:href="@{/people/{id}(id=${person.getId()})}"
+       th:text="${person.getName() + ', ' +  person.getAge()}">user</a>
+</div>
+```
+
+https://habr.com/ru/post/350870/
