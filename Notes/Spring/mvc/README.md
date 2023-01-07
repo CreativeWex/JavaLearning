@@ -5,8 +5,6 @@
   * [Mapping](#Mapping)
   * [@RequestMapping](#RequestMapping)
   * [@RequestParam](#RequestMapping)
-* [HTTP методы](#HTTP)
-* [Ответы сервера](#ServerAnswers)
 * [Model](#Model)
   * [@ModelAttribute](#ModelAttribute)
 * [View](#View)

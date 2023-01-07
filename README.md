@@ -124,9 +124,6 @@
   * [Mapping](Notes/Spring/mvc/README.md#Mapping)
   * [Аннотация RequestMapping](Notes/Spring/mvc/README.md#RequestMapping)
   * [Аннотация RequestParam](Notes/Spring/mvc/README.md#RequestMapping)
-* Протокол HTTP 
-  * [HTTP методы](Notes/Spring/mvc/README.md#HTTP)
-  * [Ответы сервера](Notes/Spring/mvc/README.md#ServerAnswers)
 * Модель | Model
   * [Model](Notes/Spring/mvc/README.md#Model)
   * [Аннотация ModelAttribute](Notes/Spring/mvc/README.md#ModelAttribute)
