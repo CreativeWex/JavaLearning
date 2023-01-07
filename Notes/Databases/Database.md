@@ -11,6 +11,7 @@ JDBC API
 * [JdbcTemplateSteps](#JdbcTemplateSteps)
 * [RowMapper](#RowMapper)
 * [Выполнение запросов](#JdbcTemplateExecution)
+* [Batch Update | Пакетное обновление](#BatchUpdate)
 
 # JDBC API
 
@@ -242,4 +243,31 @@ public void delete(int id) {
     jdbcTemplate.update("DELETE FROM Person WHERE id=?", id);
 }
 ```
+
+<a name = "BatchUpdate"></a>
+
+## Batch Update | Пакетное обновление
+
+Механизм упаковки множества записей в пакет и отправка его в БД.
+
+Снижает нагрузку на бд за счет отправки множества запросов и получения ответов на них
+в виде одного пакета. БД может распараллеливать оперции вставки на несколько потоков.
+
+```java
+jdbcTemplate.batchUpdate("INSERT INTO person(name, age, email) VALUES (?, ?, ?)",
+    new BatchPreparedStatementSetter() {
+        @Override
+        public void setValues(PreparedStatement preparedStatement, int i) throws SQLException {
+            preparedStatement.setString(1, people.get(i).getName());
+            preparedStatement.setInt(2, people.get(i).getAge());
+            preparedStatement.setString(3, people.get(i).getEmail());
+        }
+
+        @Override
+        public int getBatchSize() {
+            return people.size();
+        }
+    });
+```
+
 

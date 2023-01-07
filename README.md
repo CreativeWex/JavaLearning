@@ -5,6 +5,7 @@
   * [Классы | ООП](#OOP)
   * [Коллекции | Структуры данных](#Collections)
 * Базы данных
+  * [PostgreSQL](Notes/Databases/postgreSQL)
   * [Базы данных | JDBC API | Jdbc Template](#JDBC)
 * Spring
   * [Spring Core](#SpringCore)
@@ -48,11 +49,11 @@
   * [HashSet](Notes/Java/Collection/README.md#hashset)
   * [LinkedHashSet](Notes/Java/Collection/README.md#linkedhashset)
   * [TreeSet](Notes/Java/Collection/README.md#treeset)
-  * List
+  * [List]( )
   * [ArrayList](Notes/Java/Collection/README.md#arraylist)
-  * LinkedList
-  * Queue
-  * Deque
+  * [LinkedList]()
+  * [Queue]()
+  * [Deque]()
 * Перечисления
   * [Enum](Notes/Java/Collection/README.md#enum)
   * [EnumSet](Notes/Java/Collection/README.md#enumset)
@@ -63,6 +64,8 @@
 <a name="JDBC"></a>
 
 ## Базы данных | JDBC API | Jdbc Template
+* СУБД
+  * [PostgreSQL](Notes/Databases/postgreSQL)
 * JDBC API
   * [Пример создания соединения](Notes/Databases/Database.md#connection)
   * [Statement - создание SQL-выражений](Notes/Databases/Database.md#statement)
@@ -73,6 +76,12 @@
   * [Алгоритм работы с JdbcTemplate](Notes/Databases/Database.md#JdbcTemplateSteps)
   * [RowMapper](Notes/Databases/Database.md#RowMapper)
   * [Выполнение запросов](Notes/Databases/Database.md#JdbcTemplateExecution)
+* Конфигурация
+  * [Получение доступа к значениям из файла свойств](Notes/Databases/Configuration.md#DatabaseConfiguration)
+  * [Использование аннотации Value](Notes/Databases/Configuration.md#ValueAnnotation)
+  * [Абстракция среды Spring](Notes/Databases/Configuration.md#BootConfiguration)
+* Оптимизация
+  * [Batch Update | Пакетное обновление](Notes/Databases/Database.md#BatchUpdate)
 ---
 
 <a name="Patterns"></a>
