@@ -1,15 +1,15 @@
-# Notes.Spring Boot
+# Spring Boot
 
-`@SpringBootApplication` - указывает, что это приложение Notes.Spring Boot, составная аннотация, объединяющая три другие
+`@SpringBootApplication` - указывает, что это приложение Spring Boot, составная аннотация, объединяющая три другие
 аннотации:
 
 - `@SpringBootConfiguration` - определяет класс как конфигурационный. (Специализированная форма аннотации `@Configuration`)
-- `@EnableAutoConfiguration` - включает автоконфигурацию Notes.Spring Boot
+- `@EnableAutoConfiguration` - включает автоконфигурацию Spring Boot
 - `@ComponentScan` - включает сканирование компонентов. Механизм сканирования позволяет объявлять другие классы с аннотациями,
-такими как @Component, @Controller, @Service, чтобы Notes.Spring автоматически обнаруживал и регистрировал их как компоненты в
-контексте приложения Notes.Spring.
+такими как @Component, @Controller, @Service, чтобы Spring автоматически обнаруживал и регистрировал их как компоненты в
+контексте приложения Spring.
 
-## Notes.Spring Boot Dev Tools
+## Spring Boot Dev Tools
 
 Набор дополнительных инструментов, позволяющих:
 - автоматически перезапускать приложение при изменении кода;

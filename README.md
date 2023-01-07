@@ -101,11 +101,12 @@
 ## Spring Core
 
 * [Типичные шаги в работе со Spring](Notes/Spring/core/Spring.md#SpringSteps)
+* [Способы внедрения зависимостей](Notes/Spring/core/Spring.md#injectionMethods)
 * Dependency Injection | Inversion of Control
   * [DI / IoC](Notes/Spring/core/Spring.md#diIoc)
 * Конфигурация Spring приложения. XML
   * [Application context](Notes/Spring/core/Spring.md#ApplicationContext)
-  * [Способы внедрения зависимостей](Notes/Spring/core/Spring.md#injectionMethods)
+  * [Жизненный цикл Бина](Notes/Spring/core/Spring.md#beanLifeCycle)
 * Конфигурация Spring приложения. XML + Аннотации
   * [Аннотации](Notes/Spring/core/Annotations.md#Annotations)
   * [Внедрение зависимостей с помощью аннотаций](Notes/Spring/core/Annotations.md#DI)
