@@ -1,4 +1,4 @@
-# Конфигурация Notes.Spring приложения. Аннотации + Notes.Java код
+# Конфигурация Spring приложения. Аннотации + Java код
 
 ```java
 AnnotationConfigApplicationContext context = new AnnotationConfigApplicationContext(SpringConfig.class);
@@ -6,7 +6,7 @@ AnnotationConfigApplicationContext context = new AnnotationConfigApplicationCont
 
 ## Аннотация @Configuration
 
-Помечает Notes.Java класс, который мы хотим использовать для конфигурации Notes.Spring приложения.
+Помечает Java класс, который мы хотим использовать для конфигурации Spring приложения.
 
 ```java
 @Configuration
@@ -14,7 +14,7 @@ public class SpringConfig{
 }
 ```
 
-Пустой конфигурационный Notes.Java класс равен по фунционалу пустому конфигурационному XML файлу
+Пустой конфигурационный Java класс равен по фунционалу пустому конфигурационному XML файлу
 
 ## XML теги и соответствующие аннотации
 

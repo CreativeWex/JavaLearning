@@ -22,15 +22,15 @@
 
 ## Классы | ООП
 - ООП
-  - [Детали ООП](Java/OOP.md)
-  - [Преимущества и недостатки ООП](Java/OOP.md#OOPpluses)
-  - [Статическое и динамическое связывание](Java/OOP.md#OOPbinding)
-  - [Инкапсуляция и реализации сокрытия](Java/OOP.md#OOPIncaps)
+  - [Детали ООП](Notes/Java/OOP.md)
+  - [Преимущества и недостатки ООП](Notes/Java/OOP.md#OOPpluses)
+  - [Статическое и динамическое связывание](Notes/ava/OOP.md#OOPbinding)
+  - [Инкапсуляция и реализации сокрытия](Notes/Java/OOP.md#OOPIncaps)
 - Парадигмы ООП
-  - [Наследование](Java/OOP.md#OOPInherit)
-  - [Полиморфизм](Java/OOP.md#OOPPolymorph)
-  - [Абстракция](Java/OOP.md#Abstract)
-  - [Обмен сообщениями](Java/OOP.md#Letters)
+  - [Наследование](Notes/Java/OOP.md#OOPInherit)
+  - [Полиморфизм](Notes/Java/OOP.md#OOPPolymorph)
+  - [Абстракция](Notes/Java/OOP.md#Abstract)
+  - [Обмен сообщениями](Notes/Java/OOP.md#Letters)
 
 ---
 
@@ -38,24 +38,24 @@
 
 ## Коллекции | Структуры данных
 * Интерфейс Map
-  * [Map](Java/Collection/README.md#map)
-  * [HashMap](Java/Collection/README.md#hashmap)
-  * [LinkedHashMap](Java/Collection/README.md#linkedmap)
-  * [TreeMap](Java/Collection/README.md#treemap)
-  * [HashTable](Java/Collection/README.md#hashtable)
+  * [Map](Notes/Java/Collection/README.md#map)
+  * [HashMap](Notes/Java/Collection/README.md#hashmap)
+  * [LinkedHashMap](Notes/Java/Collection/README.md#linkedmap)
+  * [TreeMap](Notes/Java/Collection/README.md#treemap)
+  * [HashTable](Notes/Java/Collection/README.md#hashtable)
 * Интерфейс Collection
-  * [Set](Java/Collection/README.md#set)
-  * [HashSet](Java/Collection/README.md#hashset)
-  * [LinkedHashSet](Java/Collection/README.md#linkedhashset)
-  * [TreeSet](Java/Collection/README.md#treeset)
+  * [Set](Notes/Java/Collection/README.md#set)
+  * [HashSet](Notes/Java/Collection/README.md#hashset)
+  * [LinkedHashSet](Notes/Java/Collection/README.md#linkedhashset)
+  * [TreeSet](Notes/Java/Collection/README.md#treeset)
   * List
-  * [ArrayList](Java/Collection/README.md#arraylist)
+  * [ArrayList](Notes/Java/Collection/README.md#arraylist)
   * LinkedList
   * Queue
   * Deque
 * Перечисления
-  * [Enum](Java/Collection/README.md#enum)
-  * [EnumSet](Java/Collection/README.md#enumset)
+  * [Enum](Notes/Java/Collection/README.md#enum)
+  * [EnumSet](Notes/Java/Collection/README.md#enumset)
 
 
 ---
@@ -64,15 +64,15 @@
 
 ## Базы данных | JDBC API | Jdbc Template
 * JDBC API
-  * [Пример создания соединения](Databases/Database.md#connection)
-  * [Statement - создание SQL-выражений](Databases/Database.md#statement)
-  * [PreparedStatement](Databases/Database.md#preparedStatement)
-  * [Выполнение SQL-выражений](Databases/Database.md#execute)
+  * [Пример создания соединения](Notes/Databases/Database.md#connection)
+  * [Statement - создание SQL-выражений](Notes/Databases/Database.md#statement)
+  * [PreparedStatement](Notes/Databases/Database.md#preparedStatement)
+  * [Выполнение SQL-выражений](Notes/Databases/Database.md#execute)
 * JdbcTemplate
-  * [JdbcTemplate](Databases/Database.md#JdbcTemplate)
-  * [Алгоритм работы с JdbcTemplate](Databases/Database.md#JdbcTemplateSteps)
-  * [RowMapper](Databases/Database.md#RowMapper)
-  * [Выполнение запросов](Databases/Database.md#JdbcTemplateExecution)
+  * [JdbcTemplate](Notes/Databases/Database.md#JdbcTemplate)
+  * [Алгоритм работы с JdbcTemplate](Notes/Databases/Database.md#JdbcTemplateSteps)
+  * [RowMapper](Notes/Databases/Database.md#RowMapper)
+  * [Выполнение запросов](Notes/Databases/Database.md#JdbcTemplateExecution)
 ---
 
 <a name="Patterns"></a>
@@ -80,65 +80,74 @@
 ## Архитектурные паттерны | Принципы проектирования
 
 * Паттерны
-  * [Виды и реализация](Patterns/)
-  * [Порождающие](Patterns/README.md#instantiate)
-  * [Структурные](Patterns/README.md#structure)
-  * [Поведенческие](Patterns/README.md#responsibilities)
+  * [Виды и реализация](Notes/Patterns/)
+  * [Порождающие](Notes/Patterns/README.md#instantiate)
+  * [Структурные](Notes/Patterns/README.md#structure)
+  * [Поведенческие](Notes/Patterns/README.md#responsibilities)
 * Принципы проектирования
-  * [Принципы SOLID](Architecture/ProgrammingPrinciples.md#Solid) -
-    [SRP](Architecture/ProgrammingPrinciples.md#srp),
-    [OCP](Architecture/ProgrammingPrinciples.md#OCP),
-    [LSP](Architecture/ProgrammingPrinciples.md#LSP),
-    [ISP](Architecture/ProgrammingPrinciples.md#ISP),
-    [DIP](Architecture/ProgrammingPrinciples.md#DIP)
-
-  * [YAGNI](Architecture/ProgrammingPrinciples.md#YAGNI)
-  * [KISS](Architecture/ProgrammingPrinciples.md#KISS)
-  * [DRY](Architecture/ProgrammingPrinciples.md#DRY)
-  * [Чистый код по Р. Мартину](Architecture/CleanCode.md)
+  * [Принципы SOLID](Notes/Architecture/ProgrammingPrinciples.md#Solid) -
+    [SRP](Notes/Architecture/ProgrammingPrinciples.md#srp), [OCP](Notes/Architecture/ProgrammingPrinciples.md#OCP),
+  [LSP](Notes/Architecture/ProgrammingPrinciples.md#LSP), [ISP](Notes/Architecture/ProgrammingPrinciples.md#ISP),
+  [DIP](Notes/Architecture/ProgrammingPrinciples.md#DIP)
+  * [YAGNI](Notes/Architecture/ProgrammingPrinciples.md#YAGNI)
+  * [KISS](Notes/Architecture/ProgrammingPrinciples.md#KISS)
+  * [DRY](Notes/Architecture/ProgrammingPrinciples.md#DRY)
+  * [Чистый код по Р. Мартину](Notes/Architecture/CleanCode.md)
 
 ---
 
 <a name="SpringCore"></a>
 
 ## Spring Core
-IoC, DI, Beans, Configuration
 
-* [DI / IoC](Spring/core/Spring.md#diIoc)
-* [Application context](Spring/core/Spring.md#ApplicationContext)
-* [Типичные шаги в работе со Spring](Spring/core/Spring.md#SpringSteps)
+* [Типичные шаги в работе со Spring](Notes/Spring/core/Spring.md#SpringSteps)
+* [Способы внедрения зависимостей](Notes/Spring/core/Spring.md#injectionMethods)
+* Dependency Injection | Inversion of Control
+  * [DI / IoC](Notes/Spring/core/Spring.md#diIoc)
 * Конфигурация Spring приложения. XML
-  * [Способы внедрения зависимостей](Spring/core/Spring.md#injectionMethods)
-
+  * [Application context](Notes/Spring/core/Spring.md#ApplicationContext)
+  * [Жизненный цикл Бина](Notes/Spring/core/Spring.md#beanLifeCycle)
 * Конфигурация Spring приложения. XML + Аннотации
-  * [Аннотации](Spring/core/Annotations.md#Annotations)
-  * [Внедрение зависимостей с помощью аннотаций](Spring/core/Annotations.md#DI)
-
+  * [Аннотации](Notes/Spring/core/Annotations.md#Annotations)
+  * [Внедрение зависимостей с помощью аннотаций](Notes/Spring/core/Annotations.md#DI)
 * Конфигурация Spring приложения. Аннотации + Java код
-  * [Java-код](Spring/core/javaCode.md)
+  * [Java-код](Notes/Spring/core/javaCode.md)
 ---
 
 <a name="SpringMVC"></a>
 
 ## Spring MVC
-* [DispatcherServlet](Spring/mvc/README.md#DispatcherServlet)
-* [Controller](Spring/mvc/README.md#Controller)
-* [HTTP](Spring/mvc/README.md#HTTP)
-* [Model](Spring/mvc/README.md#Model)
-* [View](Spring/mvc/README.md#View)
+* [Spring MVC](Notes/Spring/mvc/README.md)
+* [DispatcherServlet](Notes/Spring/mvc/README.md#DispatcherServlet)
+* Контроллер | Controller
+  * [Controller](Notes/Spring/mvc/README.md#Controller)
+  * [Mapping](Notes/Spring/mvc/README.md#Mapping)
+  * [Аннотация RequestMapping](Notes/Spring/mvc/README.md#RequestMapping)
+  * [Аннотация RequestParam](Notes/Spring/mvc/README.md#RequestMapping)
+* Модель | Model
+  * [Model](Notes/Spring/mvc/README.md#Model)
+  * [Аннотация ModelAttribute](Notes/Spring/mvc/README.md#ModelAttribute)
+* Представление | View 
+  * [View](Notes/Spring/mvc/README.md#View)
+* Шаблонизатор Thymeleaf 
+  * [Thymeleaf](Notes/Spring/mvc/README.md#thymeleaf)
+  * [Синтаксис](Notes/Spring/mvc/README.md#th:synt)
+  * [Форма | th:method | th:action | th:object](Notes/Spring/mvc/README.md#th:form)
+  * [Перебор Элементов | th:each](Notes/Spring/mvc/README.md#th:each)
 ---
 
 <a name="REST"></a>
 
 ## REST | HTTP
 * REST
-  * [RESTful](Architecture/REST/README.md)
-  * [Ограничения и принципы](Architecture/REST/README.md#principles)
+  * [RESTful](Notes/Architecture/REST/README.md)
+  * [Ограничения и принципы](Notes/Architecture/REST/README.md#principles)
 * Протокол HTTP
-  * [HTTP](Spring/mvc/README.md#HTTP)
-  * [Коммуникаия между клиентом и сервером](Architecture/REST/README.md#communcation)
-  * [URI и ресурсы](Architecture/REST/README.md#URIResources)
-  * [Примеры HTTP запросов](Architecture/REST/README.md#examples)
+  * [HTTP](Notes/Spring/mvc/README.md#HTTP)
+  * [Ответы сервера](Notes/Spring/mvc/README.md#ServerAnswers)
+  * [Коммуникаия между клиентом и сервером](Notes/Architecture/REST/README.md#communcation)
+  * [URI и ресурсы](Notes/Architecture/REST/README.md#URIResources)
+  * [Примеры HTTP запросов](Notes/Architecture/REST/README.md#examples)
 ---
 
 # Отдельные темы

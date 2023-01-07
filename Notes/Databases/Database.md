@@ -1,4 +1,4 @@
-# Notes.Java и базы данных
+# Java и базы данных
 
 ## Содержание
 JDBC API
@@ -10,7 +10,7 @@ JDBC API
 [JdbcTemplate](#JdbcTemplate)
 * [JdbcTemplateSteps](#JdbcTemplateSteps)
 * [RowMapper](#RowMapper)
-* [JdbcTemplate Execution](#JdbcTemplateExecution)
+* [Выполнение запросов](#JdbcTemplateExecution)
 
 # JDBC API
 
