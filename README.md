@@ -48,11 +48,11 @@
   * [HashSet](Notes/Java/Collection/README.md#hashset)
   * [LinkedHashSet](Notes/Java/Collection/README.md#linkedhashset)
   * [TreeSet](Notes/Java/Collection/README.md#treeset)
-  * List
+  * [List]( )
   * [ArrayList](Notes/Java/Collection/README.md#arraylist)
-  * LinkedList
-  * Queue
-  * Deque
+  * [LinkedList]()
+  * [Queue]()
+  * [Deque]()
 * Перечисления
   * [Enum](Notes/Java/Collection/README.md#enum)
   * [EnumSet](Notes/Java/Collection/README.md#enumset)
@@ -63,6 +63,8 @@
 <a name="JDBC"></a>
 
 ## Базы данных | JDBC API | Jdbc Template
+* СУБД
+  * [PostgreSQL](Notes/Databases/postgreSQL)
 * JDBC API
   * [Пример создания соединения](Notes/Databases/Database.md#connection)
   * [Statement - создание SQL-выражений](Notes/Databases/Database.md#statement)
