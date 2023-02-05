@@ -266,3 +266,5 @@ protected void configure(HttpSecurity http) throws Exception {
         <button type="submit">Logout</button>
     </form>
 ```
+
+## Аутентификация и авторизация при помощи БД
