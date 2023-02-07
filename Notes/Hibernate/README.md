@@ -118,9 +118,9 @@ SQL-команды накапливаются, а выполнение их от
 Файл application.properties:
 ```java
 # Spring properties
-        spring.datasource.url=jdbc:postgresql://localhost:5432/student_records
-        spring.datasource.username=postgres
-        spring.datasource.password=1234
+        spring.datasource.url=URL
+        spring.datasource.username=USERNAME
+        spring.datasource.password=PASSWORD
 
 # Hibernate properties
         spring.jpa.database-platform = org.hibernate.dialect.PostgreSQL94Dialect
@@ -145,7 +145,7 @@ public class Student {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    // Столбец в таблице, может ли ыть ll
+    // Столбец в таблице, может ли быть null
     @Column(name = "first_name", nullable = false)
     @NotEmpty(message = "wrong first name")
     @Size(min = 2, max = 50, message = "Parameter's length must be between 2 and 50 symbols")
