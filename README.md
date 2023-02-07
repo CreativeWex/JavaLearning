@@ -10,6 +10,7 @@
 * Spring
   * [Spring Core](#SpringCore)
   * [Spring MVC](#SpringMVC)
+  * [Hibernate | Spring Data JPA](#HibernateSpringDataJPA)
 * Архитектура
   * [Архитектурные паттерны | Принципы проектирования](#Patterns)
   * [REST | HTTP](#REST)
@@ -157,6 +158,20 @@
   * [Коммуникаия между клиентом и сервером](Notes/Architecture/REST/README.md#communcation)
   * [URI и ресурсы](Notes/Architecture/REST/README.md#URIResources)
   * [Примеры HTTP запросов](Notes/Architecture/REST/README.md#examples)
+---
+
+<a name="HibernateSpringDataJPA"></a>
+
+## Hibernate | Spring Data JPA
+* ORM, JPA, Hibernate
+  * [Основные понятия](#begin)
+* Entity | Сущность
+  * [Entity](#entity)
+  * [Статусы жизненного цикла Entity-объекта](#entityStatus)
+  * [Трансляция данных в БД | Ключевое слово flush](#flush)
+  * [Аннотации](#annotation)
+* Практическое применение
+  * [Основные шаги работы с Hibernate | Spring Data JPA](#steps)
 ---
 
 # Отдельные темы
