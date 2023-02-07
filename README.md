@@ -164,14 +164,14 @@
 
 ## Hibernate | Spring Data JPA
 * ORM, JPA, Hibernate
-  * [Основные понятия](#begin)
+  * [Основные понятия](Notes/Hibernate/README.md#begin)
 * Entity | Сущность
-  * [Entity](#entity)
-  * [Статусы жизненного цикла Entity-объекта](#entityStatus)
-  * [Трансляция данных в БД | Ключевое слово flush](#flush)
-  * [Аннотации](#annotation)
+  * [Entity](Notes/Hibernate/README.md#entity)
+  * [Статусы жизненного цикла Entity-объекта](Notes/Hibernate/README.md#entityStatus)
+  * [Трансляция данных в БД | Ключевое слово flush](Notes/Hibernate/README.md#flush)
+  * [Аннотации](Notes/Hibernate/README.md#annotation)
 * Практическое применение
-  * [Основные шаги работы с Hibernate | Spring Data JPA](#steps)
+  * [Основные шаги работы с Hibernate | Spring Data JPA](Notes/Hibernate/README.md#steps)
 ---
 
 # Отдельные темы
