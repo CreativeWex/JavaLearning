@@ -90,10 +90,10 @@
 ## Архитектурные паттерны | Принципы проектирования
 
 * Паттерны
-  * [Виды и реализация](Notes/Patterns/)
-  * [Порождающие](Notes/Patterns/README.md#instantiate)
-  * [Структурные](Notes/Patterns/README.md#structure)
-  * [Поведенческие](Notes/Patterns/README.md#responsibilities)
+  * [Виды и реализация](Notes/Architecture/Patterns)
+  * [Порождающие](Notes/Architecture/Patterns/README.md#instantiate)
+  * [Структурные](Notes/Architecture/Patterns/README.md#structure)
+  * [Поведенческие](Notes/Architecture/Patterns/README.md#responsibilities)
 * Принципы проектирования
   * [Принципы SOLID](Notes/Architecture/ProgrammingPrinciples.md#Solid) -
     [SRP](Notes/Architecture/ProgrammingPrinciples.md#srp), [OCP](Notes/Architecture/ProgrammingPrinciples.md#OCP),

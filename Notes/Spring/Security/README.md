@@ -1,5 +1,21 @@
 # Spring Security
 
+Зависимость
+```java
+<dependency>
+ <groupId>org.springframework.boot</groupId>
+ <artifactId>spring-boot-starter-security</artifactId>
+</dependency>
+```
+## Файл конфигурации
+
+Объявляет bean-компонент `PasswordEncoder`, используемый для содания новых пользователей при аутентификации
+- BCryptPasswordEncoder - применяет надежное шифрование bcrypt;
+- NoOpPasswordEncoder – не применяет шифрования (для тестирования);
+- StandardPasswordEncoder – применяет шифрование SHA-256 (устарел);
+
+
+
 ## InMemoryUserDetailsManager
 
 Хранилище, в котором хранятся пользователи.
