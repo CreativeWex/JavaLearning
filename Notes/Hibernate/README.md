@@ -292,6 +292,9 @@ public class StudentController {
     }
 }
 ```
+
+---
+
 <a name = "mtmRel"></a>
 
 # Отношение Many To Many
@@ -305,7 +308,7 @@ public class StudentController {
 - однонаправленная - только одна сторона отображает отношение;
 - двунаправленная - обе стороны отображают отношение.
 
-### Unidirectional
+## Unidirectional
 
 
 <img src="img/mtmUni.png" alt="uni">
@@ -320,7 +323,7 @@ The Post Entity
 private Set<Tag> tags = new HashSet<>();
 ```
 
-### Bidirectonal
+## Bidirectonal
 
 <img src="img/mtmBi.png" alt="bi">
 
@@ -350,7 +353,7 @@ The Tag Entity
 @ManyToMany(mappedBy = "tags") // Поле, с которым связываем
 private Set<Post> posts = new HashSet<>();
 ```
-### Mapping
+## Mapping
 
 Получение данных из связанных таблиц через вспомогательные сущности.
 
