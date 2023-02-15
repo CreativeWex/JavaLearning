@@ -335,7 +335,7 @@ The Post Entity
     joinColumns = @JoinColumn(name = "post_id"),
     inverseJoinColumns = @JoinColumn(name = "tag_id")    
 )
-private Set<Tag> tags = new ArrayList<>();
+private Set<Tag> tags = new HashSet<>();
 
 // Методы для взаимосвязи
 public void addTag(Tag tag) {
