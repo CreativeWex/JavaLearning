@@ -7,6 +7,7 @@
 * [Трансляция данных в БД | Ключевое слово flush](#flush)
 * [Аннотации](#annotation)
 * [Основные шаги работы с Hibernate | Spring Data JPA](#steps)
+* [Отношение Many to many](#mtmRel)
 
 <a name = "begin"></a>
 
@@ -291,8 +292,9 @@ public class StudentController {
     }
 }
 ```
+<a name = "mtmRel"></a>
 
-## Many To Many
+# Отношение Many To Many
 
 Связь между двумя родительскими сущностями осуществляется через дочернюю.
 Родители предствляют собой независимые сущности, не зависящие от других сущностей.
