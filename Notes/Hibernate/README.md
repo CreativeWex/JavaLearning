@@ -331,9 +331,9 @@ The Post Entity
 
 ```java
 @ManyToMany(cascade = {CascadeType.PERSIST, CascadeType.MERGE})
-@JoinTable(name = "post_tag",
-    joinColumns = @JoinColumn(name = "post_id"),
-    inverseJoinColumns = @JoinColumn(name = "tag_id")    
+@JoinTable(name = "post_tag", // промежуточная таблица
+    joinColumns = @JoinColumn(name = "post_id"), // поле для связи с дочерней сущностью
+    inverseJoinColumns = @JoinColumn(name = "tag_id") // поле для связи со вторым родителем   
 )
 private Set<Tag> tags = new HashSet<>();
 
