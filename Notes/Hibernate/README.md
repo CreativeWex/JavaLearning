@@ -294,12 +294,137 @@ public class StudentController {
 
 ## Many To Many
 
+Связь между двумя родительскими сущностями осуществляется через дочернюю.
+Родители предствляют собой независимые сущности, не зависящие от других сущностей.
+
+<img src="img/manyToMany.png" alt="img">
+
+Виды
+- однонаправленная - только одна сторона отображает отношение;
+- двунаправленная - обе стороны отображают отношение.
+
+### Unidirectional
 
 
+<img src="img/mtmUni.png" alt="uni">
 
+The Post Entity
+```java
+@ManyToMany(cascade = {CascadeType.PERSIST, CascadeType.MERGE})
+@JoinTable(name = "post_tag", // промежуточная таблица
+    joinColumns = @JoinColumn(name = "post_id"), // поле для связи с дочерней сущностью
+    inverseJoinColumns = @JoinColumn(name = "tag_id") // поле для связи со вторым родителем
+)
+private Set<Tag> tags = new HashSet<>();
+```
 
+### Bidirectonal
 
+<img src="img/mtmBi.png" alt="bi">
 
+The Post Entity
 
+```java
+@ManyToMany(cascade = {CascadeType.PERSIST, CascadeType.MERGE})
+@JoinTable(name = "post_tag",
+    joinColumns = @JoinColumn(name = "post_id"),
+    inverseJoinColumns = @JoinColumn(name = "tag_id")    
+)
+private Set<Tag> tags = new ArrayList<>();
+
+// Методы для взаимосвязи
+public void addTag(Tag tag) {
+    tags.add(tag); //добавили элемент в текущий объект
+    tag.getPosts().add(this); // Добавили текущий объект в связанный
+}
+
+public void removeTag(Tag tag) {
+    tags.remove(tag);
+    tag.getPosts().remove(this);
+}
+```
+The Tag Entity
+```java
+@ManyToMany(mappedBy = "tags") // Поле, с которым связываем
+private Set<Post> posts = new HashSet<>();
+```
+### Mapping
+
+Получение данных из связанных таблиц через вспомогательные сущности.
+
+<img src="img/mtmMapping.png" alt="mtmMapping">
+
+Вспомогательный класс PostTagId использует аннотацию `@Embeddable`, чтобы объявить, что класс может быть встроен в другие объекты.
+
+```java
+@Embeddable
+public class PostTagId implements Serializable {
+    
+    @Column(name = "post_id")
+    private Long postId;
+    
+    @Column(name = "tag_id")
+    private Long tagId;
+    
+    public PostTagId(){}
+  
+    public PostTagId(Long postId, Long tagId) {
+        this.postId = postId;
+        this.tagId = tagId;
+    }
+    // Getter, Setter, HashCode, Equals etc
+}
+```
+
+Класс PostTag связывает сущности Post и Tag. 
+
+Аннотация `@EmbeddedId` указывает на id встраиваемого объекта, `@MapsId` - поле встраиваемого объекта
+
+```java
+@Entity
+public class PostTag {
+    @EmbeddedId
+    private PostTagId id;
+    
+    @ManyToOne
+    @MapsId("postId")
+    private Post post;
+    
+    @ManyToOne
+    @MapsId("tagId")
+    private Tag tag;
+}
+```
+
+При этом сущности Post и Tag больше не будут использовать аннотацию `@ManyToMany`.
+Вместо этого отношение обрабатывается как двунаправленная `@OneToMany`
+
+Класс Post
+```java
+@OneToMany(mappedBy = "post",
+    cascade = CascadeType.ALL,
+    orphanRemoval = true
+)
+private List<PostTag> tags = new ArrayList<>();
+
+public void removeTag(Tag tag) {
+    for (Iterator<PostTag> interator = tags.iterator(); iterator.hasNext(); ) {
+        PostTag postTag = interator.next();
+        if (postTag.getPost().equals(this) && postTag.getTag().equals(tag)) {
+            iterator.remove();
+            postTag.getTag().getPosts().remove(postTag);
+            postTag.setPost(null);
+            postTag.setTag(null);
+            break;
+        }
+    }    
+}
+```
+
+Класс Tag
+```java
+@OneToMany(mappedBy = "tag", cascade = CascadeType.ALL, orphanRemoval = true)
+private List<PostTag> posts = new ArrayList<>();
+```
 
 
