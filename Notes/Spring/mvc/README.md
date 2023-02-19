@@ -250,7 +250,7 @@ public String newPerson(Model model) {
 
 #### Форма | th:method | th:action | th:object
 
-```java
+```html
 <form th:method="POST" th:action="@{/people}" th:object="${person}">
 
     <label for="name">Enter name: </label>
@@ -274,11 +274,29 @@ public String newPerson(Model model) {
 
 #### Перебор Элементов | th:each
 
-```java
+```html
 <div th:each="person : ${peopleList}">
     <a th:href="@{/people/{id}(id=${person.getId()})}"
        th:text="${person.getName() + ', ' +  person.getAge()}">user</a>
 </div>
 ```
+
+#### Форма для отправки параметров GET запроса
+```html
+<form action="http://foo.com" method="get">
+    <div>
+        <label for="say">What greeting do you want to say?</label>
+        <input name="say" id="say" value="Hi">
+    </div>
+    <div>
+        <label for="to">Who do you want to say it to?</label>
+        <input name="to" id="to" value="Mom">
+    </div>
+    <div>
+        <button>Send my greetings</button>
+    </div>
+</form>
+```
+
 
 https://habr.com/ru/post/350870/
