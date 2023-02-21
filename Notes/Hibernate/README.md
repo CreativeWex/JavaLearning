@@ -295,6 +295,73 @@ public class StudentController {
 
 ---
 
+<br>
+<br>
+
+<a name = "otmRel"></a>
+
+# Отношение One to Many
+
+
+
+- Используется родительской сущностью для отображения коллекции дочерних сущностей;
+- Виды:
+  - двунаправленная (bidirectional) - аннотация `@OneToMany` только на родительской стороне
+в то время как на дочерней `@ManyToOne`
+  - однонаправленная - отображение только на родительской стороне.
+
+## Bidirectional
+
+<img src="img/manyToOne.png">
+
+
+<img src="img/otmBi.png">
+
+Дочерняя сущность:
+```java
+@ManyToOne
+private Post post;
+```
+
+Родительская сущность
+```java
+@OneToMany(mappedBy = "post", cascade = CascadeType.ALL, orphanRemoval = true)
+private List<PostComment> comments = new ArrayList<>();
+
+public void addComment(PostComment comment) {
+    comments.add(comment);
+    comment.setPost(this);
+}
+
+public void removeComment(PostComment comment) {
+    comments.remove(comment);
+    comment.setPost(null);
+}
+```
+
+Связывание
+
+```java
+
+// Добавление
+Post post = new Post("First post");
+post.addCommet(new PostComment("My first review"));
+post.addCommet(new PostComment("My second review"));
+entityManager.persist(post);
+
+// Удаление
+
+Post post = entityManager.find(Post.class, 1L);
+post.removeComment(post.getComments().get(0));
+
+```
+
+
+---
+
+<br>
+<br>
+
 <a name = "mtmRel"></a>
 
 # Отношение Many To Many
