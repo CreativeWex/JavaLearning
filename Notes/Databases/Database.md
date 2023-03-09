@@ -156,7 +156,7 @@ public JdbcTemplate jdbcTemplate() {
 ```
 
 ### 2. Добавить поле и соответствующий конструктор в DAO-класс
-Спринг внедрит зависимость с помощью аннотации `@Autowired`
+Спринг внедрит зависимость с помощью аннотации `@Autowired`.
 ```java
 private JdbcTemplate jdbcTemplate;
 
@@ -169,7 +169,7 @@ public PersonDAO(JdbcTemplate jdbcTemplate) {
 <a name = "RowMapper"></a>
 
 ### 3. Создать RowMapper
-**RowMapper** - объект, отображающий строки результата запроса в POJO-объекты указанного класса
+**RowMapper** - объект, отображающий строки результата запроса в POJO-объекты указанного класса.
 
 ```java
 public class PersonMapper implements RowMapper<Person> {
@@ -188,7 +188,7 @@ public class PersonMapper implements RowMapper<Person> {
 Класс реализовывает интерфейс RowMapper. Создаем новый объект, помещаем значения из `resultSet`.
 
 #### BeanPropertyRowMapper
-В случае совпадения имени поля и имени ячейки таблицы можно использовать BeanPropertyRowMapper
+В случае совпадения имени поля и имени ячейки таблицы можно использовать BeanPropertyRowMapper.
 ```java
 ```java
 public List<Person> index() {
