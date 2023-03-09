@@ -170,8 +170,12 @@
   * [Статусы жизненного цикла Entity-объекта](Notes/Hibernate/README.md#entityStatus)
   * [Трансляция данных в БД | Ключевое слово flush](Notes/Hibernate/README.md#flush)
   * [Аннотации](Notes/Hibernate/README.md#annotation)
+* Отношения
+  * [One to Many](#otmRel)
+  * [Many to many](#mtmRel)
 * Практическое применение
   * [Основные шаги работы с Hibernate | Spring Data JPA](Notes/Hibernate/README.md#steps)
+
 ---
 
 # Отдельные темы

@@ -7,6 +7,7 @@
 * [Трансляция данных в БД | Ключевое слово flush](#flush)
 * [Аннотации](#annotation)
 * [Основные шаги работы с Hibernate | Spring Data JPA](#steps)
+* [Отношение One to Many](#otmRel)
 * [Отношение Many to many](#mtmRel)
 
 <a name = "begin"></a>
@@ -301,8 +302,6 @@ public class StudentController {
 <a name = "otmRel"></a>
 
 # Отношение One to Many
-
-
 
 - Используется родительской сущностью для отображения коллекции дочерних сущностей;
 - Виды:
