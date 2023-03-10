@@ -7,10 +7,10 @@
 * Базы данных
   * [PostgreSQL](Notes/Databases/postgreSQL)
   * [Базы данных | JDBC API | Jdbc Template](#JDBC)
-* Spring
+  * [Hibernate | Spring Data JPA](#HibernateSpringDataJPA)
+* Экосистема Spring
   * [Spring Core](#SpringCore)
   * [Spring MVC](#SpringMVC)
-  * [Hibernate | Spring Data JPA](#HibernateSpringDataJPA)
 * Архитектура
   * [Архитектурные паттерны | Принципы проектирования](#Patterns)
   * [REST | HTTP](#REST)
