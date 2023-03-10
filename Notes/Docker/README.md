@@ -196,3 +196,36 @@ docker container inspect id-контейнера
 docker exec -it id-контейнера-или-имя название-процесса
 // docker exec -it 287cc3171cec bash
 ```
+
+### Создание имени для контейнераа
+
+```dockerfile
+docker run -d --name my_nginx nginx
+```
+
+### Публикация портов контейнеров
+
+```dockerfile
+docker run -p внешний-порт:порт-контейнера название-образа
+// docker run -p 8080:80 nginx
+```
+
+## Подключение томов
+
+Будет создан новый контейнер на основании образа. Сдержимое папки внутри контейнера будет заменено соднржимым лоепльной папки.
+
+```dockerfile
+docker run подключение-тома путь-к-локальной-папке:путь-к-папке-внутри-контейнера nginx
+docker run -v ${PWD}:/usr/share/nginx/html nginx
+```
+
+### Автоматическое удаление контейнера после остановки
+Флаг --rm
+```dockerfile
+docker run `
+--name my-nginx `
+-p 8080:80 `
+-d `
+--rm `
+nginx
+```
