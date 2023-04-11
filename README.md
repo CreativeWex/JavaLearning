@@ -4,10 +4,11 @@
 * Java
   * [Классы | ООП](#OOP)
   * [Коллекции | Структуры данных](#Collections)
-* Базы данных
+* Базы данных, хранение данных
   * [PostgreSQL](Notes/Databases/postgreSQL)
   * [Базы данных | JDBC API | Jdbc Template](#JDBC)
   * [Hibernate | Spring Data JPA](#HibernateSpringDataJPA)
+  * [Миграция БД | FlyWay]()
 * Экосистема Spring
   * [Spring Core](#SpringCore)
   * [Spring MVC](#SpringMVC)
@@ -191,8 +192,19 @@
   * [Команды](Notes/Docker/README.md#commands)
 * Пример
   * [Создание контейнера busybox](Notes/Docker/README.md#busyBoxexample)
+---
+
+<a name="DBMigration"></a>
+
+## Миграция БД | FlyWay
+
+* [FlyWay](Notes/FlyWay/README.md)
 
 ---
+
+
+<br>
+<br>
 
 # Отдельные темы
 
