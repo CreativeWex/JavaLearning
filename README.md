@@ -8,7 +8,7 @@
   * [PostgreSQL](Notes/Databases/postgreSQL)
   * [Базы данных | JDBC API | Jdbc Template](#JDBC)
   * [Hibernate | Spring Data JPA](#HibernateSpringDataJPA)
-  * [Миграция БД | FlyWay]()
+  * [Миграция БД | FlyWay](#DBMigration)
 * Экосистема Spring
   * [Spring Core](#SpringCore)
   * [Spring MVC](#SpringMVC)
