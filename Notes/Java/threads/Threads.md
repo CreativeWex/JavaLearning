@@ -155,7 +155,7 @@ TIMED_WAITING, TERMINATED. <br><Br>
 3. Загрузка контекста потока из очереди готовых к выполнению с наибольшим приоритетом;
 4. Удаление из очерели загруженного потока и начало его выполнения.
 
-## Методы, позволяющие влиять на планировщика потоков
+# Методы, позволяющие влиять на планировщика потоков
 
 * Методы класса java.lang.Thread:
   * public static void sleep(long millis) throws InterruptedException
@@ -167,7 +167,7 @@ TIMED_WAITING, TERMINATED. <br><Br>
   * public final void notify()
   * public final void notifyAll()
 
-### Метод Thread.sleep()
+## Метод Thread.sleep()
 
 Мы можем приостановить выполнение потока на заданное время с помощью статического метода `Thread.sleep()`.
 
@@ -210,16 +210,93 @@ public class ThreadsDemo {
 }
 ```
 
-### Метод Thread.yield()
+## Метод Thread.yield()
 Когда метод `Thread.yield()` вызывается внутри потока, он сообщает планировщику потоков, что текущий поток считает, что он
 сделал достаточное количество работы и готов уступить время процессора другим потокам. 
 
 После вызова этого метода
 планировщик может выбрать другой поток для выполнения, а не продолжать выполнение текущего.
 
-### Метод Thread.join()
+## Метод Thread.join()
 
  Приостанавливает выполнение текущего потка до тех пор, пока другой поток не закончит свое выполнение.
 
 `void join(long millis)` – этот метод приостановит выполнение текущего потока на указанное время в миллисекундах.
-Выполнение этого метода зависит от реализации ОС, поэтому Java не гарантирует, что текущий поток будет ждать указанное вами время.
+Выполнение этого метода зависит от реализации ОС, поэтому Java не гарантирует, что текущий поток будет ждать указанное
+вами время.
+
+Пример
+1. Расширение класса Thread
+```java
+public class JoinThread extends Thread {
+
+  public JoinThread(String name) {
+    super(name);
+  }
+
+  @Override
+  public void run() {
+    String currentName = Thread.currentThread().getName();
+    for (int i = 0; i < 10; i++) {
+      System.out.println("Thread " + currentName + ": " + i);
+      try {
+        Thread.sleep(500);
+      } catch (InterruptedException e) {
+        e.printStackTrace();
+      }
+    }
+    System.out.println("Thread " + currentName + " completed");
+  }
+}
+```
+2. Запуск потоков.
+```java
+public class Demo {
+  public static void main(String[] args) {
+    JoinThread a = new JoinThread("A");
+    JoinThread b = new JoinThread("B");
+    JoinThread c = new JoinThread("C");
+
+    a.start();
+    try {
+      a.join();
+    } catch (InterruptedException e) {
+      e.printStackTrace();
+    }
+    b.start();
+    c.start();
+  }
+}
+```
+
+Метод `join()` применяется для ожидания завершения потока, для которого он вызывается. 
+
+В данном случае, вызов `a.join();` означает, что поток `main` будет ожидать, пока поток "A" не завершится, прежде чем продолжить выполнение.
+
+После завершения потока "A", программа продолжает выполнять строки `b.start();` и `c.start();`, которые запускают
+потоки "B" и "C" соответственно.
+
+Таким образом, выполнение программы показывает последовательный вывод чисел для потока "A", затем чисел для потока "B",
+и, наконец, чисел для потока "C". 
+
+Поскольку метод `join()` ожидает завершения потока "A", то потоки "B" и "C" начинаются после завершения "A". В результате вывод на экран может выглядеть следующим образом (последовательность может меняться в зависимости от планировщика потоков):
+```java
+Thread A: 0
+Thread A: 1
+Thread A: 2
+Thread A: 3
+Thread A: 4
+Thread A: 5
+Thread A: 6
+Thread A: 7
+Thread A: 8
+Thread A: 9
+Thread A completed
+Thread B: 0
+Thread C: 0
+Thread C: 1
+Thread B: 1
+Thread C: 2
+...
+```
+Вывод продолжается с числами для потоков "B" и "C" после завершения потока "A".
