@@ -1,4 +1,22 @@
-# Java 8
+# Содержание
+
+* Функциональные интерфейсы
+  * [Функциональные интерфейсы](#funcInt)
+* Лямбда-выражения
+  * [Лямбда-выражения](#lambda)
+  * [Лямбда vs анонимные классы](#lambdaVsAnon)
+* Встроенные функциональные интерфейсы
+  * [Встроенные функциональные интерфейсы](#innerLambIn) 
+  * [Интерфейс Predicate (T -> boolean)](#predicate)
+  * [Интерфейс Consumer (T -> void)](#consumer)
+  * [Интерфейс Function (T -> R)](#function)
+  * [Интерфейс Supplier (() -> T)](#supplier)
+  * [Интерфейс UnaryOperator (T -> T)](#unary)
+* Ссылки на методы
+  * [Ссылки на методы](#mlinks)
+
+<a name="funcInt"></a>
+
 # Функциональные интерфейсы
 
 Если интерфейс содержит только один абстрактный метод, то н назвается **функциональным**.
@@ -23,7 +41,9 @@ interface Function<T1, T2, R> {
     R apply(T1 arg1, T2 arg2);
 }
 ```
-# Лямбда выражения
+
+<a name="lambda"></a>
+# Лямбда-выражения
 
 Лямбда представляет собой набор инструкций, которые можно выделить в отдельную переменную и затем многократно вызвать в различных местах программы.
 
@@ -137,6 +157,8 @@ public class FunctionalInterfaceColorCheck {
 }
 ```
 
+<a name="lambdaVsAnon"></a>
+
 ## Лямбда vs анонимные классы
 Лямбда выражения являются альтернативой анонимным классам. Но они не одинаковы.
 
@@ -153,6 +175,8 @@ public class FunctionalInterfaceColorCheck {
 методы класса, в котором они используют invokedynamic инструкцию. **Лямбда более эффективны, так как не надо
 загружать еще один класс**.
 
+<a name="innerLambIn"></a>
+
 ## Встроенные функциональные интерфейсы
 В Java 8 добавлены встроенные функциональные интерфейсы в пакет _java.util.function_:
 
@@ -161,6 +185,8 @@ public class FunctionalInterfaceColorCheck {
 * Function
 * Supplier
 * UnaryOperator
+
+<a name="predicate"></a>
 
 # Интерфейс Predicate (T -> boolean)
 
@@ -204,6 +230,9 @@ default Predicate<T> or(Predicate<? super T> other); // хотя бы один
 default Predicate<T> negate(); // отрицание
 ```
 
+> Метод `and` комбинирует два предиката, но он оптимизирован для выполнения короткого замыкания
+(short-circuiting). Это означает, что **если первый предикат в цепочке вернет false, то второй предикат не будет выполнен**, так как результат всей операции уже будет известен.
+
 ### Пример
 
 ```java
@@ -225,3 +254,197 @@ public class PredicateDemo {
     }
 }
 ```
+
+<a name="consumer"></a>
+
+# Интерфейс Consumer (T -> void)
+
+**Consumer интерфейс используется** в случае, если необходимо передать объект на вход и произвести над ним некоторые операции
+не возвращая результат.
+
+Описание интерфейса Consumer:
+```java
+@FunctionalInterface
+public interface Consumer<T> {
+    void accept(T t);
+}
+```
+
+### Пример
+
+Одно действие с объектом
+```java
+ public static void main(String[] args){
+        System.out.println("hw");
+        Consumer<String> printUpperCase=s->System.out.println(s.toUpperCase());
+        Consumer<String> printLowerCase=s->System.out.println(s.toLowerCase());
+        printUpperCase.accept("Hello World");
+        printLowerCase.accept("Hello World");
+        }
+```
+
+Последовательность действий с объектом
+```java
+public class ConsumerDemo {
+    public class Store {
+        public int productLeft;
+
+        public Store(int productLeft) {
+            this.productLeft = productLeft;
+        }
+    }
+
+
+    public static void main(String[] args) {
+        //Продажа товара
+        System.out.println("\nproduct test");
+        Consumer<Store> sellOneProduct = store -> {
+            System.out.println("product sold");
+            store.productLeft--;
+            System.out.println("product left = " + store.productLeft);
+        };
+        Store store = new ConsumerDemo().new Store(10);
+        sellOneProduct.accept(store);
+        sellOneProduct.accept(store);
+        sellOneProduct.accept(store);
+    }
+}
+
+```
+
+## Методы по умолчанию:
+
+Consumer интерфейс содержит метод по умолчанию, который возвращает составной Consumer, выполняющий последовательно действия указанные в каждом интерфейсе:
+
+```java
+default Consumer<T> andThen(Consumer<? super T> after)
+```
+
+### Пример
+
+```java
+public static void main(String[] args) {
+        Consumer<String> printUpperCase = s -> System.out.println(s.toUpperCase());
+        Consumer<String> printLowerCase = s -> System.out.println(s.toLowerCase());
+        printUpperCase.andThen(printLowerCase).accept("Hello World");
+    }
+```
+
+<a name="function"></a>
+
+# Интерфейс Function (T -> R)
+
+Принимает значение в качестве аргумента одного типа и возвращает другое значение. Часто используется для
+преобразования одного значения в другое:
+
+```java
+@FunctionalInterface
+public interface Function<T, R> {
+    R apply(T t);
+}
+```
+
+### Пример
+
+```java
+public class FunctionDemo {
+    public static void main(String[] args) {
+        Function<Double, Long> doubleToLongConverter = d -> Math.round(d);
+        System.out.println(doubleToLongConverter.apply(5.23));
+
+        Function<Long, String> longStringFunction = l -> {
+            if (l < 0) {
+                return "Отрицательное число";
+            } else if (l > 0) {
+                return "Положительное число";
+            }
+            return "Ноль";
+        };
+        System.out.println(longStringFunction.apply(-1L));
+        System.out.println(longStringFunction.apply(1L));
+        System.out.println(longStringFunction.apply(0L));
+    }
+}
+```
+
+## Методы по умолчанию:
+```java
+default <V> Function<T, V> andThen(Function<? super R, ? extends V> after);
+default <V> Function<V, R> compose(Function<? super V, ? extends T> before);
+```
+
+Эти методы позволяют объединить несколько функций в одну цепочку, что может быть полезно при преобразовании данных.
+
+- **andThen()** - выполняется после текущего интерфейса;
+- **compose()** - выполняется перед текущим интерфейсом.
+
+```java
+static <T> Function<T, T> identity() // всегда возвращает входной параметр.
+```
+
+<a name="supplier"></a>
+
+# Интерфейс Supplier (() -> T)
+
+Интерфейс Supplier используется тогда, когда на вход не передаются значения, но необходимо вернуть результат. 
+
+```java
+public class SupplierDemo {
+    public static void main(String[] args) {
+        String str = "hello world";
+        Supplier<String> supplier = () -> str.toUpperCase();
+        System.out.println(supplier.get());
+    }
+}
+```
+
+<a name="unary"></a>
+
+# Интерфейс UnaryOperator (T -> T)
+**Расширяет функционал функционального интерфейса Function**. Используется в случае, если аргумент и возвращаемое значение одного типа.
+
+```java
+@FunctionalInterface
+public interface UnaryOperator<T> extends Function<T, T>
+{
+…
+}
+```
+### Пример
+
+```java
+import java.util.function.UnaryOperator;
+
+public class UnaryOperatorDemo {
+    public static void main(String[] args) {
+        UnaryOperator<String> uo = s -> s.toUpperCase();
+        // То же, что и Function<String, String> f = s -> s.toUpperCase();
+        System.out.print(uo.apply("Java 8"));
+    }
+}
+```
+
+<a name="mlinks"></a>
+
+# Ссылки на методы
+
+Если лямбда выражения вызывают только один существующий метод, лучше ссылаться на этот метод по его имени
+
+### Пример
+
+```java
+Consumer<String> consumer = str -> System.out.println(str);
+```
+Можно переписать с помощью method references следующим образом:
+```java
+Consumer<String> consumer = System.out::println;
+```
+
+Ссылки на методы бывают четырех видов:
+
+| Тип                                                           | Пример                               |
+|---------------------------------------------------------------|--------------------------------------|
+| Ссылка на статический метод                                   | ContainingClass::staticMethodName    |
+| Ссылка на нестатический метод конкретного объекта             | containingObject::instanceMethodName |
+| Ссылка на нестатический метод любого объекта конкретного типа | ContainingType::methodName           |
+| Ссылка на конструктор                                         | ClassName::new                       |
