@@ -56,6 +56,40 @@ userList.stream().map(user -> {
 
 <br>
 
+### flatMap() - плоский список
+
+Применение flatMap позволяет объединить несколько потоков в один и получить плоский список элементов.
+Таким образом, flatMap часто применяется, когда у нас есть вложенные коллекции или списки, и мы хотим получить
+один плоский список всех элементов.
+
+Пример: есть список из объектов Person, и каждый Person имеет список его друзей. Необходимо получить список всех друзей
+из всех Person.
+
+```java
+public class Person {
+    private String name;
+    private List<Person> friends;
+
+    // Конструктор и геттеры
+
+    public static void main(String[] args) {
+        List<Person> persons = List.of(
+            new Person("Alice", List.of(new Person("Bob"), new Person("Charlie"))),
+            new Person("David", List.of(new Person("Eve"), new Person("Frank")))
+        );
+
+        List<Person> allFriends = persons.stream()
+                                         .flatMap(person -> person.getFriends().stream())
+                                         .toList();
+
+        allFriends.forEach(friend -> System.out.println(friend.getName()));
+    }
+}
+
+```
+
+<br>
+
 ### sorted(Comparator<T> comparator) - сортировка
 Сортирует элементы потока в соответствии с компаратором
 
