@@ -27,7 +27,31 @@ RabbitMQ и прочих.
 - расширять данные;
 - выполнять фильтрацию, группировку, агрегацию и др.
 
+---
+
+<a name="producerapi"></a>
+
 # KafkaProducer API
+
+<details>
+  <summary>Содержание</summary>
+
+* KafkaProducer API
+  * [KafkaProducer API](#producerapi)
+* I. Конфигурация
+  * [Конфигурация](#producerConfigSteps)
+  * [1. Properties](#producerConfig)
+  * [2. ProducerFactory<K, V>](#producerFactory)
+  * [3. KafkaTemplate](#kafkaTemplate)
+  * [Пример конфигуации KafkaProducer](#producerConfigExample)
+* II. Разбиение топиков на партиции
+  * [Topic](#topic)
+  * [Партиции](#partitions)
+  * [Ключи](#keys)
+* III. Отправка сообщений
+  * [Основные методы](#sendingMessages)
+  * [Чтение Topic в Apache Kafka](#kafkaCommandLine)
+</details>
 
 Позволяет приложению **отправлять сообщения (события) в брокеры** Kafka.
 Как продюсер, ваше приложение будет отправлять сообщения в различные топики, и затем другие приложения,
@@ -41,6 +65,10 @@ RabbitMQ и прочих.
 - отправка сообщений;
 - асинхронность.
 
+---
+
+<a name="producerConfigSteps"></a>
+
 ## I. Конфигурация
 
 Конфигурация включает в себя ряд свойств, настраивающих поведение продюсера при отправке сообщений в Kafka.
@@ -49,6 +77,8 @@ RabbitMQ и прочих.
 1. producerConfig - Найстройка свойств конфигурации;
 2. Бин ProducerFactory<K, V>;
 3. Бин KafkaTemplate<K, V>.
+
+<a name="producerConfig"></a>
 
 ### 1. producerConfig
 
@@ -118,6 +148,8 @@ spring.kafka.bootstrap-servers=kafka:9092
   <br><br>
 - **ProducerConfig.ProducerConfig.REQUEST_TIMEOUT_MS_CONFIG** - время ожидания ответа от сервера перед повторной попыткой.
 
+<a name="producerFactory"></a>
+
 ### 2. ProducerFactory<K, V>
 
 Интерфейс для создания экземпляров KafkaProducer. ProducerFactory обрабатывает жизненный цикл KafkaProducer, включая
@@ -141,6 +173,8 @@ public ProducerFactory<String, String> producerFactory() {
 - `TransactionalProducerFactory` - позволяет отправлять сообщения в Kafka в пределах одной транзакции, обеспечивая атомарность при записи в несколько топиков.
   **Используется при одновременной работе с большим количеством топиков**;
 
+<a name="kafkaTemplate"></a>
+
 ### 3. KafkaTemplate
 
 KafkaTemplate предоставляет различные методы для отправки сообщений в Kafka.
@@ -151,6 +185,8 @@ public KafkaTemplate<String, String> kafkaTemplate(ProducerFactory<String, Strin
     return new KafkaTemplate<>(producerFactory);
 }
 ```
+
+<a name="producerConfigExample"></a>
 
 ### Пример конфигуации KafkaProducer
 
@@ -195,12 +231,16 @@ public class KafkaProducerConfig {
 
 ## II. Разбиение топиков на партиции
 
+<a name="topic"></a>
+
 ### Topic
 
 **Topic** - это некая категория, канал и коллекция, в которую записываются, где хранятся и откуда читаются различные
 события и сообщения. Топик можно представить как аналог таблицы в базе данных или папки электронной почты, где
 **сообщения с одним и тем же ключом сгруппированы вместе**. Например, может быть топик "логи", куда записываются все
 логи приложения, или топик "заказы", куда записываются все заказы от клиентов.
+
+<a name="partitions"></a>
 
 ### Партиции
 
@@ -213,9 +253,13 @@ public class KafkaProducerConfig {
 
 > Количество партиций определяется при создании топика и остается постоянным.
 
+<a name="keys"></a>
+
 ### Ключи
 
 Все сообщения с одинаковым ключом попадают в одну и ту же партицию и обрабатываются в порядке их отправки. Это обеспечивает семантику упорядоченности для сообщений с одинаковым ключом.
+
+<a name="sendingMessages"></a>
 
 ## III. Отправка сообщений
 
@@ -254,6 +298,7 @@ kafkaTemplate.send(message);
 kafkaTemplate.sendDefault(new ProducerRecord<>("Hello, Kafka!"));
 ```
 
+<a name="kafkaCommandLine"></a>
 
 ## Чтение Topic в Apache Kafka
 
