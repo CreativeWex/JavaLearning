@@ -1,6 +1,6 @@
 <a name="ApacheKafka"></a>
 
-# Apache Kafka | Spring Kafka
+# Apache Kafka | Spring for Apache Kafka
 
 <details>
   <summary>Содержание</summary>
@@ -29,6 +29,13 @@
     * [2. ConsumerFactory<K, V>](#ConsumerFactoryKV)
     * [3. Контейнер слушателей KafkaListenerContainerFactory](#KafkaListenerContainerFactory)
     * [Пример конфигуации KafkaConsumer](#KafkaConsumerExample)
+* **Spring for Apache Kafka**
+  * [Spring for Apache Kafka](#springKafka)
+* Аннотации
+  * [Аннотации](#springKafkaAnnotations)
+  * [@KafkaListener](#annotationKafkaListener)
+  * [@SendTo](#annotationSendTo)
+  * [@KafkaHandler](#annotationKafkaHandler)
 </details>
 
 Для передачи информации между миросервисами применяется технология **брокеров/диспетчеров сообщений**, таких как Kafka,
@@ -526,6 +533,97 @@ public class KafkaConsumerConfig {
         ConcurrentKafkaListenerContainerFactory<String, String> factory = new ConcurrentKafkaListenerContainerFactory<>();
         factory.setConsumerFactory(consumerFactory);
         return factory;
+    }
+}
+```
+
+---
+
+<a name="springKafka"></a>
+
+# Spring for Apache Kafka
+
+<details>
+  <summary>Содержание</summary>
+
+* Spring for Apache Kafka
+  * [Spring for Apache Kafka](#springKafka)
+* Аннотации
+  * [Аннотации](#springKafkaAnnotations)
+  * [@KafkaListener](#annotationKafkaListener)
+  * [@SendTo](#annotationSendTo)
+  * [@KafkaHandler](#annotationKafkaHandler)
+</details>
+
+**Spring for Apache Kafka** представляет собой модуль Spring Framework, который предоставляет интеграцию с
+Apache Kafka. Он **упрощает написание** Kafka-производителей и потребителей, а также **обеспечивает интеграцию**
+с механизмами обработки сообщений, такими как Spring Messaging и Spring Integration.
+
+<a name="springKafkaAnnotations"></a>
+
+## Аннотации
+
+<a name="annotationKafkaListener"></a>
+
+- **@KafkaListener**: cамая важная и широко используемая аннотация в Spring Kafka.
+  Она помечает методы в классе как слушатели (consumers) для определенных топиков Kafka.
+  Когда сообщение поступает в топик, соответствующий метод будет вызван для обработки сообщения.
+
+```java
+@Component
+public class MyKafkaConsumer {
+
+    @KafkaListener(topics = "my-topic")
+    public void listenToMyTopic(String message) {
+        System.out.println("Received message: " + message);
+    }
+}
+```
+
+<a name="annotationSendTo"></a>
+
+- **@SendTo**: Эта аннотация используется для отправки ответа от метода-обработчика (@KafkaListener) в
+  другой топик. Она позволяет управлять потоком данных между топиками и обеспечивает более сложные сценарии
+  обработки сообщений.
+
+```java
+@Component
+public class MyKafkaConsumer {
+
+    @KafkaListener(topics = "input-topic")
+    @SendTo("output-topic")
+    public String listenAndSendToOutputTopic(String message) {
+        return "Processed: " + message;
+    }
+}
+```
+
+<a name="annotationKafkaHandler"></a>
+
+
+- **@KafkaHandler**: Эта аннотация используется вместе с абстрактным методом в классе, помеченном как @KafkaListener.
+  Она позволяет определить несколько методов для обработки различных типов сообщений в одном классе-потребителе.
+  <br><br> По умолчанию, если у вас есть класс, который слушает (потребляет) сообщения из одного топика, то все методы в этом классе,
+  помеченные аннотацией @KafkaListener, будут обрабатывать сообщения одного и того же типа данных (например,
+  все методы обрабатывают String).
+  <br><br> `@KafkaHandler` позволяет обработать сообщения разных типов данных (например, String и Integer)
+  в одном и том же классе. Если приходит сообщение String, то будет вызван метод handleStringMessage, а если приходит
+  сообщение Integer, то будет вызван метод handleIntegerMessage.
+
+```java
+@Component
+public class MyKafkaConsumer {
+
+    @KafkaListener(topics = "my-topic")
+    @KafkaHandler
+    public void handleStringMessage(String message) {
+        System.out.println("Received string message: " + message);
+    }
+
+    @KafkaListener(topics = "my-topic")
+    @KafkaHandler
+    public void handleIntegerMessage(Integer message) {
+        System.out.println("Received integer message: " + message);
     }
 }
 ```
