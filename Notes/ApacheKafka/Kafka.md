@@ -1,13 +1,12 @@
 <a name="ApacheKafka"></a>
 
-# Apache Kafka
+# Apache Kafka | Spring Kafka
 
 <details>
   <summary>Содержание</summary>
 
-* [Apache Kafka](#ApacheKafka)
-<br><br>
-* KafkaProducer API
+* [**Apache Kafka**](#ApacheKafka)
+* **KafkaProducer API**
   * [KafkaProducer API](#producerapi)
   * I. Конфигурация
     * [Конфигурация](#producerConfigSteps)
@@ -22,8 +21,7 @@
   * III. Отправка сообщений
     * [Основные методы](#sendingMessages)
     * [Чтение Topic в Apache Kafka](#kafkaCommandLine)
-<br><Br>
-* KafkaConsumer API
+* **KafkaConsumer API**
   * [KafkaConsumer API](#kafkaConsumerApi)
   * I. Конфигурация
     * [Конфигурация](#consumerConfigSteps)
@@ -483,7 +481,7 @@ ConsumerFactory. Такой подход позволяет легко наст�
 При использовании Spring Kafka, каждый `ConsumerFactory` может быть использован вместе с соответствующим
 контейнером слушателей (`KafkaListenerContainerFactory`) для создания контейнеров слушателей, которые будут прослушивать указанные топики Kafka.
 
-<a name="#KafkaListenerContainerFactory></a>
+<a name="KafkaListenerContainerFactory></a>
 
 ### 3. Контейнер слушателей KafkaListenerContainerFactory
 
