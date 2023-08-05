@@ -1,4 +1,37 @@
+<a name="ApacheKafka"></a>
+
 # Apache Kafka
+
+<details>
+  <summary>Содержание</summary>
+
+* [Apache Kafka](#ApacheKafka)
+<br><br>
+* KafkaProducer API
+  * [KafkaProducer API](#producerapi)
+  * I. Конфигурация
+    * [Конфигурация](#producerConfigSteps)
+    * [1. Properties](#producerConfig)
+    * [2. ProducerFactory<K, V>](#producerFactory)
+    * [3. KafkaTemplate](#kafkaTemplate)
+    * [Пример конфигуации KafkaProducer](#producerConfigExample)
+  * II. Разбиение топиков на партиции
+    * [Topic](#topic)
+    * [Партиции](#partitions)
+    * [Ключи](#keys)
+  * III. Отправка сообщений
+    * [Основные методы](#sendingMessages)
+    * [Чтение Topic в Apache Kafka](#kafkaCommandLine)
+<br><Br>
+* KafkaConsumer API
+  * [KafkaConsumer API](#kafkaConsumerApi)
+  * I. Конфигурация
+    * [Конфигурация](#consumerConfigSteps)
+    * [1. Properties](#consumerConfig)
+    * [2. ConsumerFactory<K, V>](#ConsumerFactoryKV)
+    * [3. Контейнер слушателей KafkaListenerContainerFactory](#KafkaListenerContainerFactory)
+    * [Пример конфигуации KafkaConsumer](#KafkaConsumerExample)
+</details>
 
 Для передачи информации между миросервисами применяется технология **брокеров/диспетчеров сообщений**, таких как Kafka,
 RabbitMQ и прочих.
@@ -36,7 +69,7 @@ RabbitMQ и прочих.
 <details>
   <summary>Содержание</summary>
 
-* KafkaProducer API
+* Kafka Producer API
   * [KafkaProducer API](#producerapi)
 * I. Конфигурация
   * [Конфигурация](#producerConfigSteps)
@@ -74,7 +107,7 @@ RabbitMQ и прочих.
 Конфигурация включает в себя ряд свойств, настраивающих поведение продюсера при отправке сообщений в Kafka.
 
 Конфигурация состоит из **следующих шагов**:
-1. producerConfig - Найстройка свойств конфигурации;
+1. producerConfig - настройка свойств конфигурации;
 2. Бин ProducerFactory<K, V>;
 3. Бин KafkaTemplate<K, V>.
 
@@ -240,6 +273,15 @@ public class KafkaProducerConfig {
 **сообщения с одним и тем же ключом сгруппированы вместе**. Например, может быть топик "логи", куда записываются все
 логи приложения, или топик "заказы", куда записываются все заказы от клиентов.
 
+```java
+@Bean
+public NewTopic testTopic() {
+    return TopicBuilder.name("messageTopic")
+            // .partitions() - Количество партиций, которое будет у топика
+            .build();
+}
+```
+
 <a name="partitions"></a>
 
 ### Партиции
@@ -309,3 +351,183 @@ kafkaTemplate.sendDefault(new ProducerRecord<>("Hello, Kafka!"));
 2. Войти в контейнер Kafka в интерактивном режиме среды Linux с помощью команды
    `docker exec -it <id_контейнера> bash`.
 3. Выполнить команду `/opt/kafka/bin/kafka-console-consumer.sh --topic <название_топика> --from-beginning --bootstrap-server localhost:9092`.
+
+---
+
+<a name="kafkaConsumerApi"></a>
+
+# KafkaConsumer API
+
+<details>
+  <summary>Содержание</summary>
+
+* KafkaConsumer API
+  * [KafkaConsumer API](#kafkaConsumerApi)
+* I. Конфигурация
+  * [Конфигурация](#consumerConfigSteps)
+  * [1. Properties](#consumerConfig)
+  * [2. ConsumerFactory<K, V>](#ConsumerFactoryKV)
+  * [3. Контейнер слушателей KafkaListenerContainerFactory](#KafkaListenerContainerFactory)
+  * [Пример конфигуации KafkaConsumer](#KafkaConsumerExample)
+</details>
+
+Предоставляет **средства для создания клиентов**, которые могут читать данные (потреблять сообщения) из топиков.
+
+Основные компоненты:
+**Конфигурация**;
+- **KafkaConsumer** - основной компонент - предоставляет методы для чтения данных из топиков;
+- **ConsumerRecord** - класс, предоставляющий отдельное сообщение (запись) из топика;
+- **ConsumerRecords** - коллекция классов `ConsumerRecord`, которые были прочитаны из Kafka за одну операцию чтения.
+
+<a name="consumerConfigSteps"></a>
+
+## I. Конфигурация
+
+Конфигурация состоит из **следующих шагов**:
+1. consumerConfig - найстройка свойств конфигурации;
+2. Бин ConsumerFactory<K, V>;
+3. Контейнер слушателей KafkaListenerContainerFactory.
+
+<a name="consumerConfig"></a>
+
+### 1. consumerConfig
+
+Свойства представляют собой пару ключ-значение и могут быть реализованы через специальный класс `Properties()` или
+через `Map<String,Object>` и может выглядеть следующим образом:
+
+```java
+public Map<String, Object> consumerConfig() {
+        Map<String, Object> properties = new HashMap<>();
+        properties.put(ConsumerConfig.BOOTSTRAP_SERVERS_CONFIG, bootstrapServersUrl);
+        properties.put(ConsumerConfig.KEY_DESERIALIZER_CLASS_CONFIG, StringDeserializer.class);
+        properties.put(ConsumerConfig.VALUE_DESERIALIZER_CLASS_CONFIG, StringDeserializer.class);
+        return properties;
+}
+```
+Класс ConsumerConfig содержит константы, отвечающие за свойства. Рассмотрим свойства подробнее:
+* **ConsumerConfig.BOOTSTRAP_SERVERS_CONFIG** (обязательное свойство) - указывает адреса серверов Kafka (брокеров), к
+  которым должен подключиться консюмер. Если работа ведется с кластером Kafka и серверов несколько, то они указываются через запятую. В примере список адресов
+  хранится в поле класса bootstrapServersUrl, в которую Spring вставляет значение из application.properties Spring Boot приложения.
+```java
+    @Value("${spring.kafka.bootstrap-servers}")
+    private String bootstrapServersUrl;
+```
+
+Файл application.properties. После знака '=' указывается ip-адрес kafka (например, localhost) и порт (9092 по умолчанию).
+```java
+spring.kafka.bootstrap-servers=kafka:9092
+```
+> В данном примере 'kafka' - название контейнера docker-compose
+```dockerfile
+  kafka:
+    image: wurstmeister/kafka:2.13-2.8.1
+    container_name: kafka
+    ports:
+      - "9092:9092"
+    environment:
+      KAFKA_ADVERTISED_LISTENERS: PLAINTEXT://kafka:9092
+      KAFKA_LISTENER_SECURITY_PROTOCOL_MAP: PLAINTEXT:PLAINTEXT,PLAINTEXT_HOST:PLAINTEXT
+      KAFKA_LISTENERS: PLAINTEXT://0.0.0.0:9092,PLAINTEXT_HOST://kafka:29092
+      KAFKA_INTER_BROKER_LISTENER_NAME: PLAINTEXT
+      KAFKA_ZOOKEEPER_CONNECT: zookeeper:2181
+    depends_on:
+      - zookeeper
+      
+    spring-app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: spring-app
+    ports:
+      - "8080:8080"
+    depends_on:
+      - kafka
+    environment:
+      SPRING_KAFKA_BOOTSTRAP_SERVERS: kafka:9092
+```
+
+* **ConsumerConfig.GROUP_ID_CONFIG** - определяет ID для группы, к которой принадлежит данный потребитель.
+  Параметр GROUP_ID_CONFIG не связан с именами топиков. Группа потребителей объединяет несколько потребителей, которые читают данные из одного и того же топика Kafka.
+  Каждый потребитель в группе читает свое собственное подмножество партиций топика, таким образом, обеспечивается
+  балансировка нагрузки и распределение обработки сообщений между потребителями.
+
+Пример:
+```
+configProps.put(ConsumerConfig.GROUP_ID_CONFIG, "my-consumer-group"); // Уникальный идентификатор группы потребителей
+```
+
+* **ConsumerConfig.KEY_DESERIALIZER_CLASS_CONFIG** - класс десериализации для ключей сообщений, получаемых от Kafka;
+* **ConsumerConfig.VALUE_DESERIALIZER_CLASS_CONFIG** - класс десериализации для значений сообщений, получаемых от Kafka;
+
+<a name="ConsumerFactoryKV"></a>
+
+### 2. ConsumerFactory<K, V>
+
+Интерфейс для создания потребителей (экземпляров класса Consumer).
+
+```java
+@Bean
+public ConsumerFactory<String, String> consumerFactory() {
+    return new DefaultKafkaConsumerFactory<>(consumerConfig());
+}
+```
+> В общем случае для каждого топика, который вы хотите прослушивать, рекомендуется создавать свой собственный
+ConsumerFactory. Такой подход позволяет легко настроить различные параметры для каждого потребителя.
+
+У ConsumerFactory ожет быть несколько реализаций:
+1. **DefaultKafkaConsumerFactory** - реализация по умолчанию, создает экземпляры KafkaConsumer с настройками
+   из свойств конфигурации.
+2. **CachingConsumerFactory** - реализация ConsumerFactory, которая оборачивает другой ConsumerFactory и предоставляет кешированные экземпляры KafkaConsumer. Это может улучшить производительность при повторном использовании потребителей.
+3. При необходимости можно создавать собственные реализации.
+
+При использовании Spring Kafka, каждый `ConsumerFactory` может быть использован вместе с соответствующим
+контейнером слушателей (`KafkaListenerContainerFactory`) для создания контейнеров слушателей, которые будут прослушивать указанные топики Kafka.
+
+<a name="#KafkaListenerContainerFactory></a>
+
+### 3. Контейнер слушателей KafkaListenerContainerFactory
+
+```java
+@Bean
+public KafkaListenerContainerFactory<ConcurrentMessageListenerContainer<String, String>> listenerFactory(
+        ConsumerFactory<String, String> consumerFactory
+) {
+    ConcurrentKafkaListenerContainerFactory<String, String> factory = new ConcurrentKafkaListenerContainerFactory<>();
+    factory.setConsumerFactory(consumerFactory);
+    return factory;
+}
+```
+
+<a name="KafkaConsumerExample"></a>
+
+### Пример конфигуации KafkaConsumer
+
+```java
+@Configuration
+public class KafkaConsumerConfig {
+    @Value("${spring.kafka.bootstrap-servers}")
+    private String bootstrapServersUrl;
+
+    public Map<String, Object> consumerConfig() {
+        Map<String, Object> properties = new HashMap<>();
+        properties.put(ConsumerConfig.BOOTSTRAP_SERVERS_CONFIG, bootstrapServersUrl);
+        properties.put(ConsumerConfig.KEY_DESERIALIZER_CLASS_CONFIG, StringDeserializer.class);
+        properties.put(ConsumerConfig.VALUE_DESERIALIZER_CLASS_CONFIG, StringDeserializer.class);
+        return properties;
+    }
+
+    @Bean
+    public ConsumerFactory<String, String> consumerFactory() {
+        return new DefaultKafkaConsumerFactory<>(consumerConfig());
+    }
+
+    @Bean
+    public KafkaListenerContainerFactory<ConcurrentMessageListenerContainer<String, String>> listenerFactory(
+            ConsumerFactory<String, String> consumerFactory
+    ) {
+        ConcurrentKafkaListenerContainerFactory<String, String> factory = new ConcurrentKafkaListenerContainerFactory<>();
+        factory.setConsumerFactory(consumerFactory);
+        return factory;
+    }
+}
+```
