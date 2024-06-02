@@ -544,4 +544,248 @@ public class MyConditionalConfiguration {
 При этом при ипорте дополнительных дополнительных стартеров номерх их версии можно опустить (подтянется из parent)
 
 Но могут быть **причины, по которым вам не следует наследовать от spring-boot-starter-parent** POM. Возможно, у вас есть свой
-собственный корпоративный стандартный родительский элемент, который вам нужно использовать, или вы можете предпочесть явно объявить всю свою конфигурацию Maven.
+собственный корпоративный стандартный родительский элемент, который вам нужно использовать, или вы можете предпочесть явно
+объявить всю свою конфигурацию Maven.
+
+Если вы **не хотите использовать spring-boot-starter-parent**, вы все равно можете **сохранить преимущества управления зависимостями**,
+используя зависимость cо scope import, т. е. с ограниченной областью действия следующим образом:
+```
+<dependencyManagement>
+  <dependencies>
+    <dependency>
+      <!-- Import dependency management from Spring Boot -->
+      <groupId>org.springframework.boot</groupId>
+      <artifactId>spring-boot-dependencies</artifactId>
+      <version>3.1.5</version>
+      <type>pom</type>
+      <scope>import</scope>
+    </dependency>
+  </dependencies>
+</dependencyManagement>
+```
+(Проект будет использовать управление зависимостями из Spring Boot с версией 3.1.5 для контроля зависимостей.)
+
+> Для переопределения зависимости (например, версии) зависимость нужно явно указать в dependencies
+
+## Переопределение настроек в командной строке
+
+Плагин предлагает ряд пользовательских свойств, чтобы вы могли настраивать конфигурацию из командной строки.
+
+**Пример**: создание профилей по умолчанию, с возможностью переопределять их в командной строке.  Используется комбинация
+пользовательского свойства проекта и конфигурации MOJO (Maven Old Java Object)
+
+```java
+<project>
+  <properties>
+    <app.profiles>local,dev</app.profiles>
+  </properties>
+  <build>
+    <plugins>
+      <plugin>
+        <groupId>org.springframework.boot</groupId>
+        <artifactId>spring-boot-maven-plugin</artifactId>
+        <configuration>
+          <profiles>${app.profiles}</profiles>
+        </configuration>
+      </plugin>
+    </plugins>
+  </build>
+</project>
+```
+
+Эта конфигурация гарантирует, что local и dev включены по умолчанию. И открыто выделенное свойство, которое также можно
+переопределить в командной строке:
+```java
+$ mvn spring-boot:run -Dapp.profiles=test
+```
+
+## Цели плагина spring-boot-maven-plugin
+
+| Цель                            | 	Описание                                                                                                                                                                                                                                                  |
+|---------------------------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| spring-boot:build-image         | 	Упаковка приложения в образ OCI (Open Container Initiative) с управлением жизненным циклом. Эта цель подходит для вызова из командной строки                                                                                                              |
+| spring-boot:build-image-no-fork | 	Упаковка приложения в образ OCI без разветвления жизненного цикла. Эта цель должна использоваться при настройке выполнения цели в вашей сборке. Чтобы вызвать цель из командной строки, используйте build-image                                           |
+| spring-boot:build-info          | 	Создание файла build-info.properties на основе содержимого текущего Maven Project                                                                                                                                                                         |
+| spring-boot:help                | 	Отображение справочной информации по spring-boot-maven-plugin. Вызов mvn spring-boot:help -Ddetail=true -Dgoal=<goal-name> для отображения сведений о параметрах                                                                                          |
+| spring-boot:process-aot         | 	Вызов механизма AOT в приложении                                                                                                                                                                                                                          |
+| spring-boot:process-test-aot    | 	Вызов движка AOT при тестировании                                                                                                                                                                                                                         |
+| spring-boot:repackage           | 	Перезапуск существующих архивов JAR и WAR, чтобы их можно было запускать из командной строки с помощью java-jar. С параметром layout=NONE также может использоваться просто для упаковки JAR с вложенными зависимостями                                   |
+| spring-boot:run                 | 	Запуск приложения                                                                                                                                                                                                                                         |
+| spring-boot:start               | 	Запуск приложения Spring. В отличие от цели run не блокирует и позволяет другим целям работать с приложением. Эта цель обычно используется в сценарии интеграционного тестирования, когда приложение запускается до набора тестов и останавливается после |
+| spring-boot:stop                | 	Остановка приложения, которое было запущено с помощью цели start. Обычно вызывается после завершения набора тестов                                                                                                                                        |
+
+## Упаковка исполняемых архивов
+Плагин может создавать исполняемые архивы (jar-файлы и war-файлы), которые содержат все зависимости приложения и с которыми затем можно запускать приложения командой java-jar.
+
+Упаковка исполняемого архива выполняется целью repackage, как показано в следующем примере:
+```java
+<build>
+  <plugins>
+    <plugin>
+      <groupId>org.springframework.boot</groupId>
+      <artifactId>spring-boot-maven-plugin</artifactId>
+      <executions>
+        <execution>
+          <goals>
+            <goal>repackage</goal>
+          </goals>
+        </execution>
+      </executions>
+    </plugin>
+  </plugins>
+</build>
+```
+
+Если вы используете spring-boot-starter-parent, такое выполнение уже предварительно настроено с идентификатором выполнения repackage, так что следует добавить только определение плагина.
+
+Приведенный выше пример переупаковывает jar или war архив, созданный на этапе упаковки жизненного цикла Maven, включая любые зависимости со scoup provided, которые определены в проекте. Вы также можете исключить ненужные зависимости из сборки.
+
+Исходный артефакт по умолчанию будет переименован в .original, но также возможно сохранить исходный артефакт, используя пользовательский классификатор.
+
+Модули spring-boot-devtools и spring-boot-docker-compose по умолчанию автоматически исключаются (но вы можете управлять ими с помощью свойства excludeDevtools). Чтобы заставить его работать с war-упаковкой, зависимость spring-boot-devtools должна быть установлена как optional или с областью видимости provided.
+
+Плагин переписывает ваш манифест и, в частности, управляет записями Main-Class и Start-Class. Если значения по умолчанию не работают, вам нужно настроить значения в плагине Spring Boot. Main-Class в манифесте управляется свойством layout плагина Spring Boot, как показано в следующем примере:
+```java
+<build>
+  <plugins>
+    <plugin>
+      <groupId>org.springframework.boot</groupId>
+      <artifactId>spring-boot-maven-plugin</artifactId>
+      <configuration>
+        <mainClass>${start.class}</mainClass>
+        <layout>ZIP</layout>
+      </configuration>
+      <executions>
+        <execution>
+          <goals>
+            <goal>repackage</goal>
+          </goals>
+        </execution>
+      </executions>
+    </plugin>
+  </plugins>
+</build>
+```
+
+Свойство layout по умолчанию имеет значение, определяемое типом архива (jar или war). Доступны следующие макеты:
+
+- JAR: обычный макет исполняемого файла JAR.
+- WAR: исполняемый WAR-файл. Зависимости со scoup provided помещаются в WEB-INF/lib-provided, чтобы избежать любого столкновения при развертывании war в контейнере сервлета.
+- ZIP (псевдоним для DIR): аналогично используемому JAR макету с использованием PropertiesLauncher.
+- NONE: объединение всех зависимостей и ресурсов проекта.
+
+## Исключение зависимостей
+
+По умолчанию цели как repackage, так и run будут включать любые provided-зависимости, которые определены в проекте. Проект Spring Boot должен рассматривать provided-зависимости как контейнерные зависимости, которые требуются для запуска приложения.
+
+Некоторые из этих зависимостей могут вообще не требоваться и должны быть исключены из исполняемого файла jar. Для обеспечения согласованности они также не должны присутствовать при запуске приложения.
+
+Есть два способа исключить зависимость из упаковки/использования во время выполнения:
+
+- Исключите конкретный артефакт, идентифицированный с помощью groupId и artifactId, при необходимости с помощью classifier, если необходимо.
+- Исключите любой артефакт, принадлежащий данному groupId.
+Первый пример исключает только артефакт com.example:module1:
+
+```java
+<groupId>org.springframework.boot</groupId>
+        <artifactId>spring-boot-maven-plugin</artifactId>
+        <configuration>
+          <excludes>
+            <exclude>
+              <groupId>com.example</groupId>
+              <artifactId>module1</artifactId>
+            </exclude>
+          </excludes>
+        </configuration>
+      </plugin>
+    </plugins>
+  </build>
+</project>
+```
+
+Следующий пример исключает любой артефакт, принадлежащий группе com.example:
+
+```java
+<project>
+  <build>
+    <plugins>
+      <plugin>
+        <groupId>org.springframework.boot</groupId>
+        <artifactId>spring-boot-maven-plugin</artifactId>
+        <configuration>
+          <excludeGroupIds>com.example</excludeGroupIds>
+        </configuration>
+      </plugin>
+    </plugins>
+  </build>
+</project>
+```
+
+# Написание unit-тестов с использованием поддержки Spring Boot (?)
+
+За тесты отвечает стартер spring-boot-starter-test:
+```java
+<dependency>
+  <groupId>org.springframework.boot</groupId>
+  <artifactId>spring-boot-starter-test</artifactId>
+</dependency>
+```
+
+Вместе с этой зависимостью мы подключаем в проект следующие аннотации:
+
+- @RunWith
+- @SpringBootTest
+- @TestConfiguration
+- @TestPropertySource
+
+## Работа со свойствами в Spring Boot
+
+### @PropertySource
+
+**@PropertySource** позволяет точно указать, откуда именно должны быть загружены свойства, учитывая не только стандартные
+имена файлов, но и пользовательские или расположенные в специфичных местах файлы свойств. Это может быть полезно, если
+вы хотите использовать файлы свойств с другими именами или в других расположениях, или если у вас есть несколько источников
+свойств, которые нужно объединить.
+
+Таким образом, аннотация **@PropertySource** обеспечивает дополнительную гибкость в конфигурировании загрузки свойств и может
+быть использована в ситуациях, когда файлы свойств находятся в нетипичных местах или их путь должен быть явно указан.
+
+```java
+@PropertySource("classpath:foo.properties")
+@PropertySource("classpath:bar.properties")
+public class PropertiesWithJavaConfig {
+  // ...
+}
+```
+
+Несколько проперти можно добавлять с помощью аннотации **@PropertySources**
+```java
+@PropertySources({
+    @PropertySource("classpath:foo.properties"),
+    @PropertySource("classpath:bar.properties")  
+})
+public class PropertiesWithJavaConfig {
+  // ...
+}
+```
+## @Value
+
+Свойства можно передавать в поля с помощью placeholders:
+```java
+@Value("${jdbc.url}")
+private String jdbcUrl;
+```
+
+## Environment
+
+Можно сделать инъекцию бина Environment, из которого по ключу доставать любое св-во:
+```java
+  @Autowired
+  private Environment environment;
+  
+  private String jdbcUrl;
+  
+  public void getPropertyFromEnvironment() {
+    jdbcUrl = environment.getProperty("jdbcUrl");
+  }
+```
